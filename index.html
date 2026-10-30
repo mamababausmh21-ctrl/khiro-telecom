@@ -1,222 +1,69 @@
 <!doctype html>
-<html lang="fr">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#102d50">
-<title>KHIRO TELECOM KGP — Facturation</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102d50">
+<title>KHIRO TELECOM KGP — PDF LIST</title>
 <style>
-:root{--navy:#102d50;--blue:#1c4773;--gold:#c9a85c;--ink:#172333;--muted:#64748b;--line:#dbe2ea;--bg:#f3f6fa;--white:#fff}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
-header{background:linear-gradient(120deg,#0c213a,#173e68);color:white;padding:22px 18px}
-.head{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{display:flex;align-items:center;gap:13px}.logo{width:56px;height:56px;border:2px solid var(--gold);border-radius:13px;display:grid;place-items:center;color:var(--gold);font-weight:900;font-size:19px;letter-spacing:-1px}
-.brand h1{font-size:21px;margin:0;letter-spacing:1px}.brand p{margin:5px 0 0;color:#d8e1ec;font-size:11px;letter-spacing:2px}
-.headnote{font-size:12px;color:#e7edf5;text-align:right;line-height:1.6}
-main{max-width:1180px;margin:22px auto;padding:0 14px 40px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:18px}
-.panel{background:white;border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:0 5px 20px #102d500b}
-h2{font-size:16px;margin:0 0 15px;color:var(--navy)}h3{font-size:14px;margin:18px 0 10px;color:var(--navy)}
-.tabs{display:flex;gap:8px;margin-bottom:16px}.tab{border:1px solid var(--line);background:#f7f9fc;padding:10px 14px;border-radius:9px;cursor:pointer;font-weight:700;color:#40536a}.tab.active{background:var(--navy);color:white;border-color:var(--navy)}
-label{display:block;font-size:12px;font-weight:700;color:#536276;margin:0 0 6px}
-input,select,textarea{width:100%;border:1px solid #cfd8e3;border-radius:8px;padding:10px 11px;font:14px Arial;background:white;color:var(--ink);min-width:0}
-input:focus,select:focus{outline:2px solid #c9a85c66;border-color:var(--gold)}
-.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field.full{grid-column:1/-1}
-.rowline{display:grid;grid-template-columns:2fr .7fr 1fr 1fr 38px;gap:7px;align-items:end;margin-bottom:9px}
-.rowline label{font-size:10px}.rowline input{padding:9px 7px}
-.remove{height:38px;border:0;border-radius:8px;background:#fff0f0;color:#b42318;font-size:20px;cursor:pointer}
-.btn{border:0;border-radius:9px;padding:11px 15px;font-weight:700;cursor:pointer;font-size:13px}
-.primary{background:var(--navy);color:white}.gold{background:var(--gold);color:#18283b}.light{background:#edf2f7;color:#24364b}.danger{background:#fff0f0;color:#b42318}
-.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
-.summary{background:#f5f8fc;border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:16px}
-.sumrow{display:flex;justify-content:space-between;padding:6px 0;font-size:13px}.sumrow.total{border-top:1px solid var(--line);margin-top:5px;padding-top:12px;font-size:18px;font-weight:800;color:var(--navy)}
-.side{display:flex;flex-direction:column;gap:16px}.hint{font-size:12px;line-height:1.6;color:var(--muted)}
-.archive-item{border:1px solid var(--line);border-radius:9px;padding:10px;margin-top:8px;font-size:12px;display:flex;justify-content:space-between;gap:8px;align-items:center}
-.archive-item strong{display:block;color:var(--navy);margin-bottom:4px}.smallbtn{border:0;border-radius:7px;padding:7px 9px;background:#edf2f7;cursor:pointer;font-size:11px}
-.scan-box{border:1px dashed #b9c7d8;background:#f7f9fc;border-radius:12px;padding:13px;margin-top:10px}.scan-preview{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:9px;margin-top:12px}.scan-page{position:relative;border:1px solid var(--line);border-radius:9px;background:white;padding:6px}.scan-page img{width:100%;height:125px;object-fit:contain;background:#eef2f6;border-radius:5px}.scan-page small{display:block;text-align:center;color:var(--muted);padding:4px}.scan-page button{border:0;border-radius:6px;padding:5px 7px;margin:2px;background:#edf2f7;font-size:11px}.scan-page .del{background:#fff0f0;color:#b42318}.scan-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.scan-title{margin-top:12px}
-#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#172b42;color:white;padding:11px 16px;border-radius:9px;display:none;z-index:5;font-size:13px}
-@media(max-width:850px){main{grid-template-columns:1fr}.headnote{display:none}}
-@media(max-width:520px){.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.rowline{grid-template-columns:1.5fr .6fr .9fr .9fr 32px;gap:4px}.rowline input{font-size:12px;padding:8px 4px}.panel{padding:14px}.tab{flex:1;padding:10px 6px;font-size:12px}}
-/* Printable document */
-#printArea{display:none}
-@media print{
- @page{size:A4;margin:13mm}
- body{background:white;color:#111}.no-print,header,main,#toast{display:none!important}
- #printArea{display:block!important;font-family:Arial,sans-serif;color:#172333}
- .doc-head{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #102d50;padding-bottom:13px}
- .doc-brand{display:flex;align-items:center;gap:12px}.doc-logo{border:2px solid #c9a85c;color:#102d50;width:52px;height:52px;border-radius:10px;display:grid;place-items:center;font-weight:900}
- .doc-brand h1{font-size:20px;margin:0;color:#102d50}.doc-brand small{letter-spacing:2px;color:#777}
- .doc-title{text-align:right}.doc-title h2{font-size:21px;margin:0;color:#102d50}.doc-title p{margin:5px 0;font-size:11px}
- .doc-meta{display:flex;justify-content:space-between;margin:20px 0;font-size:12px;gap:20px}.doc-meta div{line-height:1.7}
- .doc-meta strong{color:#102d50}
- table{width:100%;border-collapse:collapse;font-size:11px;margin-top:12px}
- th{background:#102d50!important;color:white!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;text-align:left;padding:10px 7px}
- td{border-bottom:1px solid #d8dee7;padding:10px 7px}
- .doc-totals{width:48%;margin:18px 0 0 auto;font-size:12px}.doc-totals div{display:flex;justify-content:space-between;padding:6px;border-bottom:1px solid #e3e7ed}
- .doc-totals .grand{font-size:16px;font-weight:bold;color:#102d50;border-top:2px solid #102d50}
- .doc-note{margin-top:30px;border-top:1px solid #ddd;padding-top:12px;font-size:11px;color:#555}
- .signatures{display:flex;justify-content:space-between;margin-top:48px;font-size:11px}
-}
-</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-</head>
+:root{--navy:#102d50;--blue:#1d4b78;--gold:#c9a85c;--bg:#f2f5f9;--ink:#182638;--muted:#64748b;--line:#dce3eb}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Tahoma,sans-serif}header{background:linear-gradient(120deg,#0b2038,#1b4775);color:#fff;padding:22px 16px}.head{max-width:980px;margin:auto;display:flex;align-items:center;gap:13px}.logo{width:54px;height:54px;border:2px solid var(--gold);border-radius:13px;display:grid;place-items:center;color:var(--gold);font-weight:900;font-size:17px;flex-shrink:0}.brand h1{font-size:20px;margin:0;letter-spacing:.5px}.brand p{font-size:11px;color:#d9e4ef;margin:5px 0 0;letter-spacing:1.5px}main{max-width:980px;margin:20px auto;padding:0 13px 35px;display:grid;gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:17px;box-shadow:0 5px 20px #102d5009}h2{font-size:17px;color:var(--navy);margin:0 0 12px}.muted{color:var(--muted);font-size:13px;line-height:1.7}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;font-size:12px;font-weight:bold;color:#506176;margin-bottom:6px}input,textarea{width:100%;border:1px solid #cbd5e1;border-radius:9px;padding:12px;font:15px Arial,Tahoma,sans-serif;color:var(--ink);background:#fff}textarea{min-height:145px;resize:vertical;line-height:1.8}input:focus,textarea:focus{outline:2px solid #c9a85c55;border-color:var(--gold)}.btn{border:0;border-radius:9px;padding:12px 15px;font-weight:bold;font-size:14px;cursor:pointer}.primary{background:var(--navy);color:white}.gold{background:var(--gold);color:#172638}.light{background:#edf2f7;color:#24364b}.red{background:#fff0f0;color:#b42318}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.upload{display:block;border:2px dashed #b9c6d5;border-radius:12px;padding:18px;text-align:center;background:#f8fafc;cursor:pointer}.upload input{display:none}.previews{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.previews img{width:76px;height:76px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}.status{font-size:12px;color:var(--blue);margin-top:8px;min-height:18px}.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:300px}th{background:var(--navy);color:#fff;padding:11px 8px;font-size:13px}td{border-bottom:1px solid var(--line);padding:7px}td input{padding:9px}.num{width:54px;text-align:center}.price{width:110px}.del{border:0;border-radius:7px;padding:8px 10px;background:#fff0f0;color:#b42318;font-size:18px}.empty{text-align:center;padding:22px;color:var(--muted)}.footnote{font-size:11px;color:var(--muted);margin-top:10px}
+#printArea{display:none}@media print{@page{size:A4;margin:13mm}body{background:#fff}header,main{display:none!important}#printArea{display:block!important;color:#172333;font-family:Arial,Tahoma,sans-serif}.phead{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #102d50;padding-bottom:12px}.pbrand{display:flex;align-items:center;gap:10px}.plogo{width:46px;height:46px;border:2px solid #c9a85c;border-radius:9px;display:grid;place-items:center;color:#102d50;font-weight:900}.pbrand h1{font-size:19px;margin:0;color:#102d50}.pbrand small{color:#777;letter-spacing:1px}.ptitle{text-align:left}.ptitle h2{font-size:20px;margin:0;color:#102d50}.ptitle p{font-size:11px;margin:5px 0}.pinfo{display:flex;justify-content:space-between;margin:17px 0;font-size:11px;color:#444}.plist{width:100%;border-collapse:collapse;min-width:0;margin-top:8px;font-size:12px;direction:rtl}.plist th{background:#102d50!important;color:#fff!important;print-color-adjust:exact;-webkit-print-color-adjust:exact;text-align:right;padding:10px}.plist td{padding:10px 8px;border-bottom:1px solid #d8dee7}.plist td:nth-child(1),.plist td:nth-child(3){text-align:center}.psummary{margin-top:13px;text-align:left;font-size:13px;font-weight:bold;color:#102d50}.pnote{margin-top:28px;border-top:1px solid #ddd;padding-top:10px;font-size:10px;color:#777}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.card{padding:14px}.brand h1{font-size:17px}}
+</style></head>
 <body>
-<header class="no-print"><div class="head">
- <div class="brand"><div class="logo">KGP</div><div><h1>KHIRO TELECOM</h1><p>FACTURATION • GESTION COMMERCIALE</p></div></div>
- <div class="headnote">Outil de facturation<br>Facture & Bon de livraison • DA</div>
-</div></header>
-<main class="no-print">
-<section class="panel">
- <h2>Créer un document</h2>
- <div class="tabs">
-  <button class="tab active" id="tabFacture" onclick="setType('FACTURE')">FACTURE</button>
-  <button class="tab" id="tabBL" onclick="setType('BON DE LIVRAISON')">BON DE LIVRAISON</button>
- </div>
- <div class="fields">
-  <div class="field"><label for="docNo">N° du document</label><input id="docNo" placeholder="Ex. FAC-001"></div>
-  <div class="field"><label for="docDate">Date</label><input id="docDate" type="date"></div>
-  <div class="field"><label for="client">Nom du client</label><input id="client" placeholder="Nom / Société"></div>
-  <div class="field"><label for="phone">Téléphone du client</label><input id="phone" placeholder="05 / 06 / 07..."></div>
-  <div class="field full"><label for="address">Adresse / Wilaya (facultatif)</label><input id="address" placeholder="Adresse du client"></div>
- </div>
- <h3>Articles / Produits</h3>
- <div id="items">
-  <div class="rowline item">
-   <div><label>Désignation</label><input class="desc" placeholder="Ex. Écran Redmi Note 13"></div>
-   <div><label>Qté</label><input class="qty" type="number" min="1" value="1" oninput="recalc()"></div>
-   <div><label>Prix unit. (DA)</label><input class="price" type="number" min="0" value="0" oninput="recalc()"></div>
-   <div><label>Total (DA)</label><input class="lineTotal" value="0" readonly></div>
-   <button class="remove" title="Supprimer" onclick="removeItem(this)">×</button>
-  </div>
- </div>
- <button class="btn light" onclick="addItem()">＋ Ajouter un produit</button>
- <div class="fields" style="margin-top:15px">
-  <div class="field"><label for="discount">Remise (DA)</label><input id="discount" type="number" min="0" value="0" oninput="recalc()"></div>
-  <div class="field"><label for="paid">Montant payé (DA)</label><input id="paid" type="number" min="0" value="0" oninput="recalc()"></div>
-  <div class="field full"><label for="note">Remarque (facultatif)</label><input id="note" placeholder="Merci pour votre confiance."></div>
- </div>
- <div class="summary">
-  <div class="sumrow"><span>Sous-total</span><strong id="subtotal">0 DA</strong></div>
-  <div class="sumrow"><span>Remise</span><strong id="discountView">0 DA</strong></div>
-  <div class="sumrow total"><span>TOTAL À PAYER</span><span id="total">0 DA</span></div>
-  <div class="sumrow"><span>Payé</span><strong id="paidView">0 DA</strong></div>
-  <div class="sumrow"><span>Reste</span><strong id="remain">0 DA</strong></div>
- </div>
- <div class="actions">
-  <button class="btn primary" onclick="printDoc()">Créer PDF / Imprimer</button>
-  <button class="btn gold" onclick="saveDoc()">Enregistrer dans l'archive</button>
-  <button class="btn light" onclick="resetForm()">Nouveau document</button>
- </div>
- <p class="hint">Pour obtenir le PDF : appuie sur « Créer PDF / Imprimer », puis choisis « Enregistrer au format PDF » dans la fenêtre d’impression.</p>
+<header><div class="head"><div class="logo">KGP</div><div class="brand"><h1>KHIRO TELECOM</h1><p>LISTE PDF • KGP</p></div></div></header>
+<main>
+<section class="card">
+<h2>📋 إنشاء قائمة PDF</h2>
+<p class="muted">أدخل الموديل والسعر، أو الصق قائمة مكتوبة. يمكنك أيضاً تصوير ورقة واستخراج الكتابة منها ثم مراجعتها قبل إنشاء PDF.</p>
+<div class="grid">
+ <div class="field"><label for="listTitle">عنوان القائمة (اختياري)</label><input id="listTitle" placeholder="مثال: LISTE LCD / PRIX GROS"></div>
+ <div class="field"><label for="listDate">التاريخ</label><input id="listDate" type="date"></div>
+</div>
 </section>
-<aside class="side">
- <section class="panel">
-  <h2>Informations du commerce</h2>
-  <p style="font-weight:800;color:#102d50;margin:0 0 5px">KHIRO TELECOM KGP</p>
-  <p class="hint">Pièces détachées et écrans de téléphones<br>Gros & détail<br>Belfort, El Harrach — près du Café Echihab<br>Tél. : 0795669558</p>
-  <p class="hint">Ces coordonnées apparaissent sur le document imprimé. Tu peux les modifier dans le code de l’application si nécessaire.</p>
- </section>
- <section class="panel">
-  <h2>Archive des documents</h2>
-  <p class="hint">Les documents enregistrés restent dans ce navigateur sur cet appareil.</p>
-  <div id="archive"><p class="hint">Aucun document enregistré pour le moment.</p></div>
-  <div class="actions"><button class="btn danger" onclick="clearArchive()">Vider l’archive</button></div>
- </section>
- <section class="panel">
-  <h2>Scanner des documents en PDF</h2>
-  <p class="hint">Photographie tes papiers avec l’appareil photo ou ajoute des images. Chaque photo sera placée sur une page A4 dans un seul PDF, dans l’ordre choisi.</p>
-  <div class="scan-box">
-   <label for="scanFiles">Prendre des photos / Ajouter des pages</label>
-   <input id="scanFiles" type="file" accept="image/*" capture="environment" multiple onchange="addScanFiles(this.files)">
-   <p class="hint">Sur iPhone, autorise l’accès à l’appareil photo. Tu peux ajouter plusieurs pages en plusieurs fois.</p>
-  </div>
-  <div class="fields scan-title">
-   <div class="field full"><label for="scanName">Nom du PDF</label><input id="scanName" value="Documents_KHIRO_TELECOM" placeholder="Ex. Bon fournisseur octobre"></div>
-  </div>
-  <div id="scanCount" class="hint">Aucune page ajoutée.</div>
-  <div id="scanPreview" class="scan-preview"></div>
-  <div class="scan-actions">
-   <button class="btn primary" onclick="makeScanPDF()">Créer le PDF</button>
-   <button class="btn light" onclick="clearScans()">Tout effacer</button>
-  </div>
-  <p class="hint">Conseil : photographie chaque feuille bien à plat, avec une bonne lumière et les quatre coins visibles. Le PDF est créé directement dans ton appareil.</p>
- </section>
- <section class="panel">
-  <h2>Conseil</h2>
-  <p class="hint">Utilise « FACTURE » pour détailler les montants et paiements. Utilise « BON DE LIVRAISON » pour accompagner une expédition. Vérifie toujours les quantités et les prix avant de générer le PDF.</p>
- </section>
-</aside>
+<section class="card">
+<h2>✍️ إدخال الموديلات والأسعار</h2>
+<div class="grid">
+ <div class="field"><label for="model">الموديل</label><input id="model" placeholder="مثال: SAMSUNG A15"></div>
+ <div class="field"><label for="price">السعر (DA)</label><input id="price" type="number" min="0" inputmode="numeric" placeholder="مثال: 2500"></div>
+</div>
+<div class="actions"><button class="btn primary" id="addOne">＋ إضافة إلى القائمة</button></div>
+<p class="muted" style="margin:14px 0 7px">أو ألصق عدة أسطر، كل سطر فيه الموديل والسعر. مثال:</p>
+<textarea id="bulk" placeholder="REDMI NOTE 12 - 2500&#10;OPPO A58 : 3200&#10;SAMSUNG A15 1800"></textarea>
+<div class="actions"><button class="btn gold" id="parseBulk">استخراج الموديلات والأسعار</button><button class="btn light" id="clearBulk">مسح النص</button></div>
+</section>
+<section class="card">
+<h2>📷 تصوير ورقة أو اختيار صورة</h2>
+<label class="upload">📸 اضغط لفتح الكاميرا أو اختيار صور من الهاتف<input id="photos" type="file" accept="image/*" capture="environment" multiple></label>
+<div class="previews" id="previews"></div>
+<div class="actions"><button class="btn primary" id="runOcr">استخراج الكتابة من الصور</button><button class="btn light" id="clearPhotos">حذف الصور</button></div>
+<div class="status" id="ocrStatus">استخراج النص يحتاج اتصالاً بالإنترنت عند أول استعمال.</div>
+<div class="field" style="margin-top:10px"><label for="ocrText">النص المستخرج — راجعه وعدّله قبل الإضافة</label><textarea id="ocrText" placeholder="سيظهر النص المستخرج هنا..."></textarea></div>
+<div class="actions"><button class="btn gold" id="addOcr">إضافة النص المستخرج للقائمة</button></div>
+</section>
+<section class="card">
+<h2>🧾 مراجعة القائمة قبل PDF</h2>
+<div class="tablewrap"><table><thead><tr><th style="width:45px">#</th><th>الموديل</th><th style="width:125px">السعر (DA)</th><th style="width:55px">حذف</th></tr></thead><tbody id="rows"><tr><td colspan="4" class="empty">القائمة فارغة. أضف الموديلات والأسعار أولاً.</td></tr></tbody></table></div>
+<div class="actions"><button class="btn primary" id="makePdf">📄 إنشاء وتحميل PDF</button><button class="btn light" id="addRow">＋ سطر جديد</button><button class="btn red" id="clearList">مسح القائمة</button></div>
+<p class="footnote">للحفظ كملف PDF: بعد الضغط على إنشاء PDF اختر «Save as PDF / Enregistrer au format PDF» من نافذة الطباعة.</p>
+</section>
 </main>
 <section id="printArea"></section>
-<div id="toast"></div>
 <script>
-let scanPages=[];
-function addScanFiles(files){
- const chosen=[...(files||[])].filter(f=>f.type.startsWith('image/'));
- chosen.forEach(file=>{const url=URL.createObjectURL(file);scanPages.push({file,url,name:file.name});});
- $('scanFiles').value='';renderScans();if(chosen.length)toast(chosen.length+' photo(s) ajoutée(s).');
-}
-function renderScans(){
- $('scanCount').textContent=scanPages.length?scanPages.length+' page(s) prête(s) pour le PDF.':'Aucune page ajoutée.';
- $('scanPreview').innerHTML=scanPages.map((p,i)=>`<div class="scan-page"><img src="${p.url}" alt="Page ${i+1}"><small>Page ${i+1}</small><div style="display:flex;justify-content:center;flex-wrap:wrap"><button onclick="moveScan(${i},-1)" ${i===0?'disabled':''}>↑</button><button onclick="moveScan(${i},1)" ${i===scanPages.length-1?'disabled':''}>↓</button><button class="del" onclick="removeScan(${i})">Supprimer</button></div></div>`).join('');
-}
-function moveScan(i,step){const j=i+step;if(j<0||j>=scanPages.length)return;[scanPages[i],scanPages[j]]=[scanPages[j],scanPages[i]];renderScans();}
-function removeScan(i){URL.revokeObjectURL(scanPages[i].url);scanPages.splice(i,1);renderScans();}
-function clearScans(){scanPages.forEach(p=>URL.revokeObjectURL(p.url));scanPages=[];renderScans();}
-function imageToData(file){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{const max=2200,scale=Math.min(1,max/Math.max(img.width,img.height));const c=document.createElement('canvas');c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext('2d').drawImage(img,0,0,c.width,c.height);resolve({data:c.toDataURL('image/jpeg',0.88),width:c.width,height:c.height});};img.onerror=reject;img.src=reader.result;};reader.onerror=reject;reader.readAsDataURL(file);});}
-async function makeScanPDF(){
- if(!scanPages.length){toast('Ajoute au moins une photo.');return;}
- if(!window.jspdf||!window.jspdf.jsPDF){toast('Bibliothèque PDF non chargée. Vérifie ta connexion Internet puis recharge la page.');return;}
- const btn=document.querySelector('.scan-actions .primary');btn.disabled=true;btn.textContent='Création du PDF…';
- try{
-  const {jsPDF}=window.jspdf;const pdf=new jsPDF({orientation:'portrait',unit:'mm',format:'a4',compress:true});
-  for(let i=0;i<scanPages.length;i++){
-   if(i>0)pdf.addPage();
-   const img=await imageToData(scanPages[i].file);const pageW=210,pageH=297,margin=7;const maxW=pageW-2*margin,maxH=pageH-2*margin;const ratio=Math.min(maxW/img.width,maxH/img.height);const w=img.width*ratio,h=img.height*ratio;const x=(pageW-w)/2,y=(pageH-h)/2;
-   pdf.addImage(img.data,'JPEG',x,y,w,h,undefined,'FAST');
-   pdf.setFontSize(8);pdf.setTextColor(120);pdf.text((i+1)+' / '+scanPages.length,pageW-8,pageH-3,{align:'right'});
-  }
-  let name=$('scanName').value.trim()||'Documents_KHIRO_TELECOM';name=name.replace(/[\\/:*?"<>|]/g,'_');if(!name.toLowerCase().endsWith('.pdf'))name+='.pdf';pdf.save(name);toast('PDF créé avec '+scanPages.length+' page(s).');
- }catch(e){console.error(e);toast('Impossible de créer le PDF. Réessaie avec des photos moins lourdes.');}
- finally{btn.disabled=false;btn.textContent='Créer le PDF';}
-}
-let docType='FACTURE';
-const $=id=>document.getElementById(id);
-const money=n=>Math.round((Number(n)||0)).toLocaleString('fr-FR')+' DA';
-function today(){return new Date().toISOString().slice(0,10)}
-$('docDate').value=today();
-function setType(t){docType=t;$('tabFacture').classList.toggle('active',t==='FACTURE');$('tabBL').classList.toggle('active',t==='BON DE LIVRAISON');}
-function addItem(){
- const d=document.createElement('div');d.className='rowline item';
- d.innerHTML='<div><label>Désignation</label><input class="desc" placeholder="Nom du produit"></div><div><label>Qté</label><input class="qty" type="number" min="1" value="1" oninput="recalc()"></div><div><label>Prix unit. (DA)</label><input class="price" type="number" min="0" value="0" oninput="recalc()"></div><div><label>Total (DA)</label><input class="lineTotal" value="0" readonly></div><button class="remove" title="Supprimer" onclick="removeItem(this)">×</button>';
- $('items').appendChild(d);recalc();
-}
-function removeItem(btn){if(document.querySelectorAll('.item').length>1){btn.parentElement.remove();recalc()}else{toast('Il faut garder au moins une ligne.')}}
-function getItems(){return [...document.querySelectorAll('.item')].map(el=>({desc:el.querySelector('.desc').value.trim(),qty:Number(el.querySelector('.qty').value)||0,price:Number(el.querySelector('.price').value)||0})).filter(x=>x.desc||x.price)}
-function recalc(){
- let sub=0;document.querySelectorAll('.item').forEach(el=>{let q=Number(el.querySelector('.qty').value)||0,p=Number(el.querySelector('.price').value)||0,t=q*p;sub+=t;el.querySelector('.lineTotal').value=Math.round(t).toLocaleString('fr-FR')});
- let disc=Math.max(0,Number($('discount').value)||0),total=Math.max(0,sub-disc),paid=Math.max(0,Number($('paid').value)||0),remain=Math.max(0,total-paid);
- $('subtotal').textContent=money(sub);$('discountView').textContent=money(disc);$('total').textContent=money(total);$('paidView').textContent=money(paid);$('remain').textContent=money(remain);
-}
-function data(){recalc();let items=getItems(),subtotal=items.reduce((s,x)=>s+x.qty*x.price,0),discount=Math.max(0,Number($('discount').value)||0),total=Math.max(0,subtotal-discount),paid=Math.max(0,Number($('paid').value)||0);
- return {type:docType,no:$('docNo').value.trim()||((docType==='FACTURE'?'FAC-':'BL-')+Date.now().toString().slice(-6)),date:$('docDate').value||today(),client:$('client').value.trim(),phone:$('phone').value.trim(),address:$('address').value.trim(),items,subtotal,discount,total,paid,remain:Math.max(0,total-paid),note:$('note').value.trim()};}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function makePrint(d){
- let rows=d.items.map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.desc||'—')}</td><td>${x.qty}</td><td>${money(x.price)}</td><td>${money(x.qty*x.price)}</td></tr>`).join('');
- $('printArea').innerHTML=`<div class="doc-head"><div class="doc-brand"><div class="doc-logo">KGP</div><div><h1>KHIRO TELECOM</h1><small>KGP • PIÈCES DÉTACHÉES TÉLÉPHONES</small></div></div><div class="doc-title"><h2>${esc(d.type)}</h2><p>N° : ${esc(d.no)}</p><p>Date : ${esc(d.date)}</p></div></div>
- <div class="doc-meta"><div><strong>VENDEUR</strong><br>KHIRO TELECOM KGP<br>Gros & détail — Pièces détachées et écrans<br>Belfort, El Harrach — près du Café Echihab<br>0795669558</div><div><strong>CLIENT</strong><br>${esc(d.client||'—')}<br>${esc(d.phone||'')}<br>${esc(d.address||'')}</div></div>
- <table><thead><tr><th>#</th><th>Désignation</th><th>Qté</th><th>Prix unitaire</th><th>Total</th></tr></thead><tbody>${rows||'<tr><td colspan="5">Aucun article</td></tr>'}</tbody></table>
- <div class="doc-totals"><div><span>Sous-total</span><strong>${money(d.subtotal)}</strong></div><div><span>Remise</span><strong>${money(d.discount)}</strong></div><div class="grand"><span>TOTAL</span><strong>${money(d.total)}</strong></div>${d.type==='FACTURE'?`<div><span>Payé</span><strong>${money(d.paid)}</strong></div><div><span>Reste</span><strong>${money(d.remain)}</strong></div>`:''}</div>
- <div class="doc-note">${esc(d.note||'Merci pour votre confiance.')}</div><div class="signatures"><span>Signature du client : __________________</span><span>Cachet / Signature : __________________</span></div>`;
-}
-function printDoc(){let d=data();makePrint(d);window.print();}
-function toast(msg){$('toast').textContent=msg;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2300)}
-function getArchive(){try{return JSON.parse(localStorage.getItem('kgp_docs')||'[]')}catch(e){return []}}
-function saveDoc(){let d=data();let a=getArchive();a.unshift(d);localStorage.setItem('kgp_docs',JSON.stringify(a.slice(0,100)));renderArchive();toast('Document enregistré dans l’archive.');}
-function renderArchive(){let a=getArchive();$('archive').innerHTML=a.length?a.map((d,i)=>`<div class="archive-item"><div><strong>${esc(d.type)} • ${esc(d.no)}</strong>${esc(d.client||'Client non renseigné')}<br>${esc(d.date)} — ${money(d.total)}</div><button class="smallbtn" onclick="loadDoc(${i})">Ouvrir</button></div>`).join(''):'<p class="hint">Aucun document enregistré pour le moment.</p>';}
-function loadDoc(i){let d=getArchive()[i];if(!d)return;setType(d.type);$('docNo').value=d.no;$('docDate').value=d.date;$('client').value=d.client;$('phone').value=d.phone;$('address').value=d.address;$('discount').value=d.discount;$('paid').value=d.paid;$('note').value=d.note;$('items').innerHTML='';d.items.forEach(x=>{addItem();let el=document.querySelectorAll('.item');let last=el[el.length-1];last.querySelector('.desc').value=x.desc;last.querySelector('.qty').value=x.qty;last.querySelector('.price').value=x.price});recalc();window.scrollTo({top:0,behavior:'smooth'});toast('Document chargé.');}
-function clearArchive(){if(confirm('Supprimer tous les documents enregistrés sur cet appareil ?')){localStorage.removeItem('kgp_docs');renderArchive();}}
-function resetForm(){$('docNo').value='';$('docDate').value=today();$('client').value='';$('phone').value='';$('address').value='';$('discount').value=0;$('paid').value=0;$('note').value='';$('items').innerHTML='';addItem();setType('FACTURE');recalc();}
-renderArchive();recalc();
+const $=id=>document.getElementById(id);let items=[],photoFiles=[];
+const dateNow=()=>{let d=new Date();return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10)};$('listDate').value=dateNow();
+function cleanPrice(v){return Number(String(v||'').replace(/[^0-9.,]/g,'').replace(',','.'))||0}
+function addItem(model,price){model=String(model||'').trim();if(!model)return;items.push({model,price:cleanPrice(price)});render()}
+function render(){let body=$('rows');if(!items.length){body.innerHTML='<tr><td colspan="4" class="empty">القائمة فارغة. أضف الموديلات والأسعار أولاً.</td></tr>';return}body.innerHTML=items.map((x,i)=>`<tr><td>${i+1}</td><td><input aria-label="الموديل" value="${esc(x.model)}" data-i="${i}" data-k="model"></td><td><input class="price" aria-label="السعر" type="number" min="0" inputmode="numeric" value="${x.price}" data-i="${i}" data-k="price"></td><td><button class="del" data-del="${i}" aria-label="حذف">×</button></td></tr>`).join('')}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('rows').addEventListener('input',e=>{let i=e.target.dataset.i,k=e.target.dataset.k;if(i!==undefined&&k)items[Number(i)][k]=k==='price'?cleanPrice(e.target.value):e.target.value});$('rows').addEventListener('click',e=>{if(e.target.dataset.del!==undefined){items.splice(Number(e.target.dataset.del),1);render()}});
+$('addOne').onclick=()=>{let m=$('model').value.trim(),p=$('price').value;if(!m){alert('اكتب الموديل أولاً');return}addItem(m,p);$('model').value='';$('price').value='';$('model').focus()};
+$('addRow').onclick=()=>{items.push({model:'',price:0});render();let ins=$('rows').querySelectorAll('input');ins[ins.length-2]?.focus()};
+function parseLines(text){let added=0;for(let raw of text.split(/\n|\r/)){let s=raw.trim().replace(/^\s*(?:[-•*]|\d+[.)-])\s*/,'');if(!s)continue;let m=s.match(/^(.*?)\s*(?:[:;|–—-]|\s)\s*([0-9][0-9\s.,]*)\s*(?:DA|دج|د\.ج)?\s*$/i);if(m){let model=m[1].trim().replace(/[=:;|–—-]+$/,'').trim(),price=cleanPrice(m[2]);if(model&&price>=0){addItem(model,price);added++}}}return added}
+$('parseBulk').onclick=()=>{let n=parseLines($('bulk').value);alert(n?`تمت إضافة ${n} سطر. راجع القائمة والأسعار.`:'لم أتعرف على الأسطر. اكتب كل سطر بهذا الشكل: الموديل - السعر');};$('clearBulk').onclick=()=>$('bulk').value='';
+$('photos').addEventListener('change',e=>{photoFiles=[...photoFiles,...e.target.files];$('previews').innerHTML=photoFiles.map(f=>`<img alt="صورة ورقة" src="${URL.createObjectURL(f)}">`).join('');$('ocrStatus').textContent=`تم اختيار ${photoFiles.length} صورة.`});
+$('clearPhotos').onclick=()=>{photoFiles=[];$('photos').value='';$('previews').innerHTML='';$('ocrText').value='';$('ocrStatus').textContent='تم حذف الصور.'};
+$('runOcr').onclick=async()=>{if(!photoFiles.length){alert('صوّر ورقة أو اختر صورة أولاً');return}let btn=$('runOcr');btn.disabled=true;$('ocrStatus').textContent='جاري تحميل محرك قراءة الكتابة...';try{if(!window.Tesseract){await new Promise((resolve,reject)=>{let s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';s.onload=resolve;s.onerror=reject;document.head.appendChild(s)})}let all=[];for(let i=0;i<photoFiles.length;i++){$('ocrStatus').textContent=`جاري قراءة الصورة ${i+1} من ${photoFiles.length}...`;let result=await Tesseract.recognize(photoFiles[i],'ara+fra+eng',{logger:m=>{if(m.status==='recognizing text')$('ocrStatus').textContent=`قراءة الصورة ${i+1}: ${Math.round((m.progress||0)*100)}%`}});all.push(result.data.text)}$('ocrText').value=all.join('\n\n');$('ocrStatus').textContent='اكتملت القراءة. صحّح النص والأسعار يدوياً إذا لزم الأمر.'}catch(err){$('ocrStatus').textContent='تعذّر تشغيل قراءة الصور. تحقق من الإنترنت أو أدخل النص يدوياً.';console.error(err)}finally{btn.disabled=false}};
+$('addOcr').onclick=()=>{let n=parseLines($('ocrText').value);if(!n)alert('لم أتعرف على الموديلات والأسعار. صحّح النص إلى الشكل: MODEL - PRICE');else alert(`تمت إضافة ${n} سطر. راجع القائمة قبل إنشاء PDF.`)};
+function makePrint(){let title=$('listTitle').value.trim()||'LISTE DES PRIX';let date=$('listDate').value||dateNow();let rows=items.filter(x=>x.model.trim()).map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.model)}</td><td>${Math.round(cleanPrice(x.price)).toLocaleString('fr-FR')} DA</td></tr>`).join('');$('printArea').innerHTML=`<div class="phead"><div class="pbrand"><div class="plogo">KGP</div><div><h1>KHIRO TELECOM</h1><small>KGP • PIÈCES DÉTACHÉES TÉLÉPHONES</small></div></div><div class="ptitle"><h2>${esc(title)}</h2><p>Date : ${esc(date)}</p></div></div><div class="pinfo"><span>Gros & détail</span><span>Prix en Dinar Algérien (DA)</span></div><table class="plist"><thead><tr><th style="width:45px">N°</th><th>MODÈLE / DÉSIGNATION</th><th style="width:135px">PRIX (DA)</th></tr></thead><tbody>${rows}</tbody></table><div class="psummary">Nombre de références : ${items.filter(x=>x.model.trim()).length}</div><div class="pnote">KHIRO TELECOM KGP • Merci pour votre confiance.</div>`;window.print()}
+$('makePdf').onclick=()=>{if(!items.some(x=>x.model.trim())){alert('أضف موديل واحداً على الأقل قبل إنشاء PDF');return}makePrint()};$('clearList').onclick=()=>{if(confirm('هل تريد مسح جميع الموديلات من القائمة؟')){items=[];render()}};
 </script>
-</body>
-</html>
+</body></html>
