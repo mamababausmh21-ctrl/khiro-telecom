@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102d50">
+<title>KHIRO TELECOM KGP — Facturation</title>
+<style>
+:root{--navy:#102d50;--blue:#1c4773;--gold:#c9a85c;--ink:#172333;--muted:#64748b;--line:#dbe2ea;--bg:#f3f6fa;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+header{background:linear-gradient(120deg,#0c213a,#173e68);color:white;padding:22px 18px}
+.head{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:13px}.logo{width:56px;height:56px;border:2px solid var(--gold);border-radius:13px;display:grid;place-items:center;color:var(--gold);font-weight:900;font-size:19px;letter-spacing:-1px}
+.brand h1{font-size:21px;margin:0;letter-spacing:1px}.brand p{margin:5px 0 0;color:#d8e1ec;font-size:11px;letter-spacing:2px}
+.headnote{font-size:12px;color:#e7edf5;text-align:right;line-height:1.6}
+main{max-width:1180px;margin:22px auto;padding:0 14px 40px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:18px}
+.panel{background:white;border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:0 5px 20px #102d500b}
+h2{font-size:16px;margin:0 0 15px;color:var(--navy)}h3{font-size:14px;margin:18px 0 10px;color:var(--navy)}
+.tabs{display:flex;gap:8px;margin-bottom:16px}.tab{border:1px solid var(--line);background:#f7f9fc;padding:10px 14px;border-radius:9px;cursor:pointer;font-weight:700;color:#40536a}.tab.active{background:var(--navy);color:white;border-color:var(--navy)}
+label{display:block;font-size:12px;font-weight:700;color:#536276;margin:0 0 6px}
+input,select,textarea{width:100%;border:1px solid #cfd8e3;border-radius:8px;padding:10px 11px;font:14px Arial;background:white;color:var(--ink);min-width:0}
+input:focus,select:focus{outline:2px solid #c9a85c66;border-color:var(--gold)}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field.full{grid-column:1/-1}
+.rowline{display:grid;grid-template-columns:2fr .7fr 1fr 1fr 38px;gap:7px;align-items:end;margin-bottom:9px}
+.rowline label{font-size:10px}.rowline input{padding:9px 7px}
+.remove{height:38px;border:0;border-radius:8px;background:#fff0f0;color:#b42318;font-size:20px;cursor:pointer}
+.btn{border:0;border-radius:9px;padding:11px 15px;font-weight:700;cursor:pointer;font-size:13px}
+.primary{background:var(--navy);color:white}.gold{background:var(--gold);color:#18283b}.light{background:#edf2f7;color:#24364b}.danger{background:#fff0f0;color:#b42318}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+.summary{background:#f5f8fc;border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:16px}
+.sumrow{display:flex;justify-content:space-between;padding:6px 0;font-size:13px}.sumrow.total{border-top:1px solid var(--line);margin-top:5px;padding-top:12px;font-size:18px;font-weight:800;color:var(--navy)}
+.side{display:flex;flex-direction:column;gap:16px}.hint{font-size:12px;line-height:1.6;color:var(--muted)}
+.archive-item{border:1px solid var(--line);border-radius:9px;padding:10px;margin-top:8px;font-size:12px;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.archive-item strong{display:block;color:var(--navy);margin-bottom:4px}.smallbtn{border:0;border-radius:7px;padding:7px 9px;background:#edf2f7;cursor:pointer;font-size:11px}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#172b42;color:white;padding:11px 16px;border-radius:9px;display:none;z-index:5;font-size:13px}
+@media(max-width:850px){main{grid-template-columns:1fr}.headnote{display:none}}
+@media(max-width:520px){.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.rowline{grid-template-columns:1.5fr .6fr .9fr .9fr 32px;gap:4px}.rowline input{font-size:12px;padding:8px 4px}.panel{padding:14px}.tab{flex:1;padding:10px 6px;font-size:12px}}
+/* Printable document */
+#printArea{display:none}
+@media print{
+ @page{size:A4;margin:13mm}
+ body{background:white;color:#111}.no-print,header,main,#toast{display:none!important}
+ #printArea{display:block!important;font-family:Arial,sans-serif;color:#172333}
+ .doc-head{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #102d50;padding-bottom:13px}
+ .doc-brand{display:flex;align-items:center;gap:12px}.doc-logo{border:2px solid #c9a85c;color:#102d50;width:52px;height:52px;border-radius:10px;display:grid;place-items:center;font-weight:900}
+ .doc-brand h1{font-size:20px;margin:0;color:#102d50}.doc-brand small{letter-spacing:2px;color:#777}
+ .doc-title{text-align:right}.doc-title h2{font-size:21px;margin:0;color:#102d50}.doc-title p{margin:5px 0;font-size:11px}
+ .doc-meta{display:flex;justify-content:space-between;margin:20px 0;font-size:12px;gap:20px}.doc-meta div{line-height:1.7}
+ .doc-meta strong{color:#102d50}
+ table{width:100%;border-collapse:collapse;font-size:11px;margin-top:12px}
+ th{background:#102d50!important;color:white!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;text-align:left;padding:10px 7px}
+ td{border-bottom:1px solid #d8dee7;padding:10px 7px}
+ .doc-totals{width:48%;margin:18px 0 0 auto;font-size:12px}.doc-totals div{display:flex;justify-content:space-between;padding:6px;border-bottom:1px solid #e3e7ed}
+ .doc-totals .grand{font-size:16px;font-weight:bold;color:#102d50;border-top:2px solid #102d50}
+ .doc-note{margin-top:30px;border-top:1px solid #ddd;padding-top:12px;font-size:11px;color:#555}
+ .signatures{display:flex;justify-content:space-between;margin-top:48px;font-size:11px}
+}
+</style>
+</head>
+<body>
+<header class="no-print"><div class="head">
+ <div class="brand"><div class="logo">KGP</div><div><h1>KHIRO TELECOM</h1><p>FACTURATION • GESTION COMMERCIALE</p></div></div>
+ <div class="headnote">Outil de facturation<br>Facture & Bon de livraison • DA</div>
+</div></header>
+<main class="no-print">
+<section class="panel">
+ <h2>Créer un document</h2>
+ <div class="tabs">
+  <button class="tab active" id="tabFacture" onclick="setType('FACTURE')">FACTURE</button>
+  <button class="tab" id="tabBL" onclick="setType('BON DE LIVRAISON')">BON DE LIVRAISON</button>
+ </div>
+ <div class="fields">
+  <div class="field"><label for="docNo">N° du document</label><input id="docNo" placeholder="Ex. FAC-001"></div>
+  <div class="field"><label for="docDate">Date</label><input id="docDate" type="date"></div>
+  <div class="field"><label for="client">Nom du client</label><input id="client" placeholder="Nom / Société"></div>
+  <div class="field"><label for="phone">Téléphone du client</label><input id="phone" placeholder="05 / 06 / 07..."></div>
+  <div class="field full"><label for="address">Adresse / Wilaya (facultatif)</label><input id="address" placeholder="Adresse du client"></div>
+ </div>
+ <h3>Articles / Produits</h3>
+ <div id="items">
+  <div class="rowline item">
+   <div><label>Désignation</label><input class="desc" placeholder="Ex. Écran Redmi Note 13"></div>
+   <div><label>Qté</label><input class="qty" type="number" min="1" value="1" oninput="recalc()"></div>
+   <div><label>Prix unit. (DA)</label><input class="price" type="number" min="0" value="0" oninput="recalc()"></div>
+   <div><label>Total (DA)</label><input class="lineTotal" value="0" readonly></div>
+   <button class="remove" title="Supprimer" onclick="removeItem(this)">×</button>
+  </div>
+ </div>
+ <button class="btn light" onclick="addItem()">＋ Ajouter un produit</button>
+ <div class="fields" style="margin-top:15px">
+  <div class="field"><label for="discount">Remise (DA)</label><input id="discount" type="number" min="0" value="0" oninput="recalc()"></div>
+  <div class="field"><label for="paid">Montant payé (DA)</label><input id="paid" type="number" min="0" value="0" oninput="recalc()"></div>
+  <div class="field full"><label for="note">Remarque (facultatif)</label><input id="note" placeholder="Merci pour votre confiance."></div>
+ </div>
+ <div class="summary">
+  <div class="sumrow"><span>Sous-total</span><strong id="subtotal">0 DA</strong></div>
+  <div class="sumrow"><span>Remise</span><strong id="discountView">0 DA</strong></div>
+  <div class="sumrow total"><span>TOTAL À PAYER</span><span id="total">0 DA</span></div>
+  <div class="sumrow"><span>Payé</span><strong id="paidView">0 DA</strong></div>
+  <div class="sumrow"><span>Reste</span><strong id="remain">0 DA</strong></div>
+ </div>
+ <div class="actions">
+  <button class="btn primary" onclick="printDoc()">Créer PDF / Imprimer</button>
+  <button class="btn gold" onclick="saveDoc()">Enregistrer dans l'archive</button>
+  <button class="btn light" onclick="resetForm()">Nouveau document</button>
+ </div>
+ <p class="hint">Pour obtenir le PDF : appuie sur « Créer PDF / Imprimer », puis choisis « Enregistrer au format PDF » dans la fenêtre d’impression.</p>
+</section>
+<aside class="side">
+ <section class="panel">
+  <h2>Informations du commerce</h2>
+  <p style="font-weight:800;color:#102d50;margin:0 0 5px">KHIRO TELECOM KGP</p>
+  <p class="hint">Pièces détachées et écrans de téléphones<br>Gros & détail<br>Belfort, El Harrach — près du Café Echihab<br>Tél. : 0795669558</p>
+  <p class="hint">Ces coordonnées apparaissent sur le document imprimé. Tu peux les modifier dans le code de l’application si nécessaire.</p>
+ </section>
+ <section class="panel">
+  <h2>Archive des documents</h2>
+  <p class="hint">Les documents enregistrés restent dans ce navigateur sur cet appareil.</p>
+  <div id="archive"><p class="hint">Aucun document enregistré pour le moment.</p></div>
+  <div class="actions"><button class="btn danger" onclick="clearArchive()">Vider l’archive</button></div>
+ </section>
+ <section class="panel">
+  <h2>Conseil</h2>
+  <p class="hint">Utilise « FACTURE » pour détailler les montants et paiements. Utilise « BON DE LIVRAISON » pour accompagner une expédition. Vérifie toujours les quantités et les prix avant de générer le PDF.</p>
+ </section>
+</aside>
+</main>
+<section id="printArea"></section>
+<div id="toast"></div>
+<script>
+let docType='FACTURE';
+const $=id=>document.getElementById(id);
+const money=n=>Math.round((Number(n)||0)).toLocaleString('fr-FR')+' DA';
+function today(){return new Date().toISOString().slice(0,10)}
+$('docDate').value=today();
+function setType(t){docType=t;$('tabFacture').classList.toggle('active',t==='FACTURE');$('tabBL').classList.toggle('active',t==='BON DE LIVRAISON');}
+function addItem(){
+ const d=document.createElement('div');d.className='rowline item';
+ d.innerHTML='<div><label>Désignation</label><input class="desc" placeholder="Nom du produit"></div><div><label>Qté</label><input class="qty" type="number" min="1" value="1" oninput="recalc()"></div><div><label>Prix unit. (DA)</label><input class="price" type="number" min="0" value="0" oninput="recalc()"></div><div><label>Total (DA)</label><input class="lineTotal" value="0" readonly></div><button class="remove" title="Supprimer" onclick="removeItem(this)">×</button>';
+ $('items').appendChild(d);recalc();
+}
+function removeItem(btn){if(document.querySelectorAll('.item').length>1){btn.parentElement.remove();recalc()}else{toast('Il faut garder au moins une ligne.')}}
+function getItems(){return [...document.querySelectorAll('.item')].map(el=>({desc:el.querySelector('.desc').value.trim(),qty:Number(el.querySelector('.qty').value)||0,price:Number(el.querySelector('.price').value)||0})).filter(x=>x.desc||x.price)}
+function recalc(){
+ let sub=0;document.querySelectorAll('.item').forEach(el=>{let q=Number(el.querySelector('.qty').value)||0,p=Number(el.querySelector('.price').value)||0,t=q*p;sub+=t;el.querySelector('.lineTotal').value=Math.round(t).toLocaleString('fr-FR')});
+ let disc=Math.max(0,Number($('discount').value)||0),total=Math.max(0,sub-disc),paid=Math.max(0,Number($('paid').value)||0),remain=Math.max(0,total-paid);
+ $('subtotal').textContent=money(sub);$('discountView').textContent=money(disc);$('total').textContent=money(total);$('paidView').textContent=money(paid);$('remain').textContent=money(remain);
+}
+function data(){recalc();let items=getItems(),subtotal=items.reduce((s,x)=>s+x.qty*x.price,0),discount=Math.max(0,Number($('discount').value)||0),total=Math.max(0,subtotal-discount),paid=Math.max(0,Number($('paid').value)||0);
+ return {type:docType,no:$('docNo').value.trim()||((docType==='FACTURE'?'FAC-':'BL-')+Date.now().toString().slice(-6)),date:$('docDate').value||today(),client:$('client').value.trim(),phone:$('phone').value.trim(),address:$('address').value.trim(),items,subtotal,discount,total,paid,remain:Math.max(0,total-paid),note:$('note').value.trim()};}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function makePrint(d){
+ let rows=d.items.map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.desc||'—')}</td><td>${x.qty}</td><td>${money(x.price)}</td><td>${money(x.qty*x.price)}</td></tr>`).join('');
+ $('printArea').innerHTML=`<div class="doc-head"><div class="doc-brand"><div class="doc-logo">KGP</div><div><h1>KHIRO TELECOM</h1><small>KGP • PIÈCES DÉTACHÉES TÉLÉPHONES</small></div></div><div class="doc-title"><h2>${esc(d.type)}</h2><p>N° : ${esc(d.no)}</p><p>Date : ${esc(d.date)}</p></div></div>
+ <div class="doc-meta"><div><strong>VENDEUR</strong><br>KHIRO TELECOM KGP<br>Gros & détail — Pièces détachées et écrans<br>Belfort, El Harrach — près du Café Echihab<br>0795669558</div><div><strong>CLIENT</strong><br>${esc(d.client||'—')}<br>${esc(d.phone||'')}<br>${esc(d.address||'')}</div></div>
+ <table><thead><tr><th>#</th><th>Désignation</th><th>Qté</th><th>Prix unitaire</th><th>Total</th></tr></thead><tbody>${rows||'<tr><td colspan="5">Aucun article</td></tr>'}</tbody></table>
+ <div class="doc-totals"><div><span>Sous-total</span><strong>${money(d.subtotal)}</strong></div><div><span>Remise</span><strong>${money(d.discount)}</strong></div><div class="grand"><span>TOTAL</span><strong>${money(d.total)}</strong></div>${d.type==='FACTURE'?`<div><span>Payé</span><strong>${money(d.paid)}</strong></div><div><span>Reste</span><strong>${money(d.remain)}</strong></div>`:''}</div>
+ <div class="doc-note">${esc(d.note||'Merci pour votre confiance.')}</div><div class="signatures"><span>Signature du client : __________________</span><span>Cachet / Signature : __________________</span></div>`;
+}
+function printDoc(){let d=data();makePrint(d);window.print();}
+function toast(msg){$('toast').textContent=msg;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2300)}
+function getArchive(){try{return JSON.parse(localStorage.getItem('kgp_docs')||'[]')}catch(e){return []}}
+function saveDoc(){let d=data();let a=getArchive();a.unshift(d);localStorage.setItem('kgp_docs',JSON.stringify(a.slice(0,100)));renderArchive();toast('Document enregistré dans l’archive.');}
+function renderArchive(){let a=getArchive();$('archive').innerHTML=a.length?a.map((d,i)=>`<div class="archive-item"><div><strong>${esc(d.type)} • ${esc(d.no)}</strong>${esc(d.client||'Client non renseigné')}<br>${esc(d.date)} — ${money(d.total)}</div><button class="smallbtn" onclick="loadDoc(${i})">Ouvrir</button></div>`).join(''):'<p class="hint">Aucun document enregistré pour le moment.</p>';}
+function loadDoc(i){let d=getArchive()[i];if(!d)return;setType(d.type);$('docNo').value=d.no;$('docDate').value=d.date;$('client').value=d.client;$('phone').value=d.phone;$('address').value=d.address;$('discount').value=d.discount;$('paid').value=d.paid;$('note').value=d.note;$('items').innerHTML='';d.items.forEach(x=>{addItem();let el=document.querySelectorAll('.item');let last=el[el.length-1];last.querySelector('.desc').value=x.desc;last.querySelector('.qty').value=x.qty;last.querySelector('.price').value=x.price});recalc();window.scrollTo({top:0,behavior:'smooth'});toast('Document chargé.');}
+function clearArchive(){if(confirm('Supprimer tous les documents enregistrés sur cet appareil ?')){localStorage.removeItem('kgp_docs');renderArchive();}}
+function resetForm(){$('docNo').value='';$('docDate').value=today();$('client').value='';$('phone').value='';$('address').value='';$('discount').value=0;$('paid').value=0;$('note').value='';$('items').innerHTML='';addItem();setType('FACTURE');recalc();}
+renderArchive();recalc();
+</script>
+</body>
+</html>
