@@ -1,96 +1,171 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102d50">
-<title>KHIRO LIST PDF PRO</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>KHIRO SCREEN MATCH PRO</title>
 <style>
-:root{--navy:#102d50;--navy2:#173e68;--gold:#c9a85c;--bg:#f2f5f9;--ink:#182638;--muted:#68788c;--line:#dce3eb;--white:#fff;--green:#16845b;--red:#b42318}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,Tahoma,sans-serif;color:var(--ink)}header{background:linear-gradient(120deg,#0b2038,#194674);color:white;padding:20px 16px}.wrap{max-width:1150px;margin:auto}.brand{display:flex;align-items:center;gap:13px}.logo{width:54px;height:54px;border:2px solid var(--gold);border-radius:13px;display:grid;place-items:center;color:var(--gold);font-weight:900;font-size:19px}.brand h1{margin:0;font-size:21px;letter-spacing:.7px}.brand p{margin:5px 0 0;color:#d9e4ef;font-size:11px;letter-spacing:2px}main{max-width:1150px;margin:20px auto;padding:0 13px 45px;display:grid;grid-template-columns:1fr 300px;gap:16px}.panel{background:white;border:1px solid var(--line);border-radius:15px;padding:17px;box-shadow:0 5px 18px #102d5009;margin-bottom:15px}h2{font-size:16px;color:var(--navy);margin:0 0 13px}h3{font-size:13px;color:var(--navy);margin:17px 0 9px}.muted{font-size:12px;color:var(--muted);line-height:1.65}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;font-size:12px;color:#536276;font-weight:bold;margin:0 0 6px}input,select,textarea{font:14px Arial,Tahoma;border:1px solid #cfd8e3;border-radius:8px;padding:10px;width:100%;background:white;color:var(--ink)}textarea{min-height:120px;resize:vertical}.btn{border:0;border-radius:9px;padding:10px 14px;font-weight:bold;cursor:pointer;font-size:13px}.primary{background:var(--navy);color:white}.gold{background:var(--gold);color:#1c2c40}.light{background:#edf2f7;color:#26384d}.green{background:#e7f6ef;color:#126344}.red{background:#fff0ef;color:var(--red)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:13px}.tab{background:#f1f4f8;border:1px solid var(--line);border-radius:8px;padding:9px 12px;font-weight:bold;cursor:pointer;color:#44566c}.tab.active{background:var(--navy);color:white}.row{display:grid;grid-template-columns:1.6fr .7fr .8fr 34px;gap:7px;margin:8px 0;align-items:center}.row input{padding:9px 7px}.row button{height:37px}.list-head{display:grid;grid-template-columns:1.6fr .7fr .8fr 34px;gap:7px;font-size:10px;color:var(--muted);font-weight:bold}.stats{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{background:#f0f4f8;border-radius:8px;padding:8px 10px;font-size:12px}.pill b{color:var(--navy)}.side .panel{position:relative}.archive-item{border:1px solid var(--line);padding:9px;border-radius:9px;margin:8px 0;display:flex;justify-content:space-between;gap:6px;align-items:center;font-size:12px}.archive-item b{display:block;color:var(--navy);margin-bottom:4px}.archive-item button{padding:7px 9px}.hidden{display:none!important}.preview{border:1px dashed #b8c5d4;border-radius:10px;padding:12px;min-height:70px;background:#fafbfd}.thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}.thumbs img{width:75px;height:90px;object-fit:cover;border:1px solid var(--line);border-radius:7px}.notice{background:#fff8e8;border:1px solid #f0dfb8;border-radius:9px;padding:10px;color:#755719;font-size:12px;line-height:1.6}#toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#172b42;color:white;padding:11px 15px;border-radius:9px;display:none;z-index:9;font-size:13px}
-@media(max-width:850px){main{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}@media(max-width:480px){.panel{padding:13px}.row,.list-head{grid-template-columns:1.35fr .6fr .8fr 30px;gap:4px}.row input{font-size:12px;padding:8px 4px}.brand h1{font-size:18px}}
+:root{--bg:#0b1220;--panel:#121d2e;--panel2:#19263a;--line:#2b3b52;--gold:#e7b84b;--text:#f4f7fb;--muted:#9eacc0;--green:#31c48d;--yellow:#f4c35e;--red:#ff7777}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#0b1220,#101b2d);color:var(--text);font-family:Arial,Tahoma,sans-serif;min-height:100vh}
+header{padding:25px 18px 18px;text-align:center;border-bottom:1px solid var(--line);background:#101827}
+.logo{font-weight:900;letter-spacing:1.5px;color:var(--gold);font-size:clamp(23px,5vw,34px)}header p{color:var(--muted);margin:8px 0 0;font-size:14px}
+main{max-width:980px;margin:24px auto;padding:0 15px 40px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+button,.tab{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:12px 15px;border-radius:11px;cursor:pointer;font-weight:700}
+.tab.active,button.primary{background:var(--gold);color:#171717;border-color:var(--gold)}
+.panel{background:rgba(18,29,46,.96);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px;box-shadow:0 12px 35px #0003}
+h2{font-size:19px;margin:0 0 14px}label{display:block;color:var(--muted);font-size:13px;margin:12px 0 6px}
+input,select,textarea{width:100%;background:#0c1523;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:13px;font-size:15px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}.searchrow{display:grid;grid-template-columns:1fr auto;gap:9px}
+.small{font-size:12px;color:var(--muted);line-height:1.7}.notice{border-right:3px solid var(--yellow);padding:10px 12px;background:#2a2417;border-radius:8px;color:#f7dfaa;font-size:13px;line-height:1.7;margin-top:13px}
+.result{border:1px solid var(--line);border-radius:13px;padding:14px;margin-top:10px;background:#101a2a}
+.resulttop{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.model{font-weight:800;font-size:17px}
+.tag{font-size:11px;border-radius:30px;padding:5px 9px;font-weight:700}.confirmed{background:#123b31;color:#75e5b9}.pending{background:#463819;color:#ffda7a}.rejected{background:#482326;color:#ffaaaa}
+.meta{color:var(--muted);font-size:13px;line-height:1.8;margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions button{padding:9px 12px;font-size:12px}
+.empty{text-align:center;color:var(--muted);padding:25px 10px}.hidden{display:none!important}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:10px;border-bottom:1px solid var(--line);text-align:right}th{color:var(--gold)}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.searchrow{grid-template-columns:1fr}.panel{padding:14px}.tabs button{flex:1}}
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 </head>
 <body>
-<header><div class="wrap brand"><div class="logo">KGP</div><div><h1>KHIRO TELECOM</h1><p>LIST PDF PRO • SMART PRICE LIST MAKER</p></div></div></header>
+<header>
+  <div class="logo">KHIRO <span style="color:#fff">SCREEN MATCH</span> PRO</div>
+  <p>مرجع مطابقة شاشات الهواتف — الدقة قبل السرعة</p>
+</header>
 <main>
-<div>
-<section class="panel">
-<h2>📝 إنشاء قائمة أسعار</h2>
-<div class="grid">
-<div class="field"><label>عنوان القائمة</label><input id="listTitle" value="LISTE DES PRIX"></div>
-<div class="field"><label>القسم / الفئة</label><input id="category" placeholder="LCD / COVER / FRAME..."></div>
-<div class="field"><label>اسم المحل أو الموزع (اختياري)</label><input id="subtitle" placeholder="KHIRO TELECOM KGP"></div>
-<div class="field"><label>العملة</label><select id="currency"><option>DA</option><option>EUR</option><option>$</option></select></div>
-</div>
-<h3>إضافة الموديلات والأسعار</h3>
-<div class="list-head"><span>الموديل / المنتج</span><span>السعر</span><span>ملاحظة</span><span></span></div>
-<div id="items"></div>
-<div class="actions"><button class="btn light" onclick="addRow()">＋ إضافة سطر</button><button class="btn light" onclick="pasteToggle()">📋 لصق قائمة جماعية</button><button class="btn gold" onclick="makePDF()">📄 إنشاء PDF</button></div>
-<div id="pasteBox" class="hidden" style="margin-top:12px"><p class="muted">الصق كل منتج في سطر. مثال: Redmi Note 13 | 2500 | OLED</p><textarea id="bulkText" placeholder="Redmi Note 13 | 2500\nSamsung A15 | 3200"></textarea><div class="actions"><button class="btn primary" onclick="importBulk()">إضافة القائمة</button></div></div>
-<div class="stats"><span class="pill">عدد المنتجات: <b id="count">0</b></span><span class="pill">المكرر: <b id="dupes">0</b></span><span class="pill">أسعار ناقصة: <b id="missing">0</b></span></div>
-<div class="actions"><button class="btn green" onclick="saveArchive()">💾 حفظ في الأرشيف</button><button class="btn light" onclick="clearItems()">مسح القائمة</button></div>
-</section>
-<section class="panel">
-<h2>📷 Scanner ذكي — صورة إلى قائمة</h2>
-<p class="muted">صوّر ورقة الأسعار أو اختر صورة من الهاتف. سيحاول التطبيق قراءة النص، ثم راجع النتائج وصحّحها قبل إنشاء PDF.</p>
-<div class="grid"><div class="field"><label>تصوير بالكاميرا</label><input id="cameraInput" type="file" accept="image/*" capture="environment"></div><div class="field"><label>اختيار صورة</label><input id="imageInput" type="file" accept="image/*" multiple></div></div>
-<div class="thumbs" id="thumbs"></div><div class="actions"><button class="btn primary" onclick="runOCR()">🔍 استخراج النص من الصور</button><button class="btn light" onclick="clearImages()">حذف الصور</button></div>
-<div id="ocrStatus" class="muted" style="margin-top:9px"></div><div class="field" style="margin-top:10px"><label>النص المستخرج — راجعه قبل الاستيراد</label><textarea id="ocrText" placeholder="سيظهر النص المستخرج هنا..."></textarea></div><div class="actions"><button class="btn gold" onclick="parseOCR()">تحويل النص إلى منتجات</button></div>
-<div class="notice" style="margin-top:12px">ملاحظة: التعرف على الكتابة اليدوية أو الصور غير الواضحة قد يخطئ. تأكد من كل موديل وسعر يدوياً. يلزم اتصال بالإنترنت لتحميل محرك OCR أول مرة.</div>
-</section>
-<section class="panel">
-<h2>⚖️ مقارنة قائمتين</h2><p class="muted">الصق القائمة القديمة والجديدة (كل سطر: الموديل | السعر) لمعرفة تغيّر الأسعار والمنتجات.</p>
-<div class="grid"><div class="field"><label>القائمة القديمة</label><textarea id="oldList" placeholder="Redmi 12 | 1800"></textarea></div><div class="field"><label>القائمة الجديدة</label><textarea id="newList" placeholder="Redmi 12 | 2000"></textarea></div></div>utton
-<div class="actions"><button class="btn primary" onclick="compareLists()">مقارنة القائمتين</button></div><div id="compareResult" class="preview muted">نتائج المقارنة تظهر هنا.</div>
-</section>
-<section class="panel">
-<h2>🔧 تعديل الأسعار بالجملة</h2><div class="grid"><div class="field"><label>نوع التعديل</label><select id="bulkMode"><option value="add">إضافة مبلغ ثابت</option><option value="subtract">إنقاص مبلغ ثابت</option><option value="percent">زيادة / إنقاص نسبة %</option><option value="set">تعيين سعر موحد</option></select></div><div class="field"><label>القيمة</label><input id="bulkValue" type="number" value="0"></div></div><div class="actions"><button class="btn gold" onclick="applyBulk()">تطبيق على جميع الأسعار</button></div>
-</section>
-</div>
-<aside class="side">
-<section class="panel"><h2>🎨 إعدادات PDF</h2>
-<div class="field"><label>عدد الأعمدة</label><select id="columns"><option value="1">عمود واحد</option><option value="2" selected>عمودان</option><option value="3">3 أعمدة</option></select></div>
-<div class="field" style="margin-top:10px"><label>حجم الورق</label><select id="paper"><option value="a4">A4</option><option value="a5">A5</option></select></div>
-<div class="field" style="margin-top:10px"><label>لون التصميم</label><select id="theme"><option value="navy">أزرق وذهبي KHIRO</option><option value="black">أسود وأبيض</option><option value="blue">أزرق</option></select></div>
-<div class="field" style="margin-top:10px"><label>ترتيب المنتجات</label><select id="sorting"><option value="none">كما أدخلتها</option><option value="az">حسب الاسم A-Z</option><option value="price">حسب السعر من الأقل</option></select></div>
-<label style="display:flex;gap:8px;align-items:center;margin-top:13px"><input id="watermark" type="checkbox" checked style="width:auto"> إضافة KHIRO كعلامة مائية</label>
-<div class="actions"><button class="btn primary" style="width:100%" onclick="makePDF()">إنشاء وتحميل PDF</button></div>
-</section>
-<section class="panel"><h2>🗂️ أرشيف القوائم</h2><p class="muted">يحفظ الأرشيف داخل المتصفح على هذا الجهاز.</p><div id="archive"><p class="muted">لا توجد قوائم محفوظة.</p></div><button class="btn red" style="margin-top:10px" onclick="clearArchive()">مسح الأرشيف</button></section>
-<section class="panel"><h2>📲 مشاركة WhatsApp</h2><p class="muted">بعد إنشاء PDF، شاركه من نافذة المشاركة في هاتفك واختر WhatsApp.</p><button class="btn green" style="width:100%" onclick="sharePDF()">مشاركة آخر PDF</button></section>
-<section class="panel"><h2>ℹ️ معلومات</h2><p class="muted">KHIRO LIST PDF PRO مخصص فقط لإعداد قوائم الأسعار من النصوص والصور وتحويلها إلى ملفات PDF.</p></section>
-</aside>
-</main><div id="toast"></div>
+  <div class="tabs">
+    <button class="tab active" data-tab="search">البحث عن مطابقة</button>
+    <button class="tab" data-tab="add">إضافة مطابقة</button>
+    <button class="tab" data-tab="database">قاعدة البيانات</button>
+    <button class="tab" data-tab="backup">النسخ الاحتياطي</button>
+  </div>
+
+  <section id="search" class="view">
+    <div class="panel">
+      <h2>🔎 ابحث عن الشاشة</h2>
+      <label for="query">اكتب نوع الشاشة والموديل أو كود القطعة</label>
+      <div class="searchrow">
+        <input id="query" placeholder="مثال: LCD A12 SAMSUNG" autocomplete="off">
+        <button class="primary" id="searchBtn">بحث</button>
+      </div>
+      <div class="grid">
+        <div><label for="technology">تقنية الشاشة</label><select id="technology"><option value="">الكل</option><option>LCD</option><option>OLED</option><option>AMOLED</option><option>INCELL</option><option>غير محدد</option></select></div>
+        <div><label for="brand">العلامة التجارية</label><select id="brand"><option value="">كل العلامات</option><option>SAMSUNG</option><option>REDMI</option><option>XIAOMI</option><option>OPPO</option><option>VIVO</option><option>INFINIX</option><option>TECNO</option><option>HUAWEI</option><option>HONOR</option><option>REALME</option><option>IPHONE</option><option>POCO</option><option>GOOGLE</option></select></div>
+      </div>
+      <div class="notice">تنبيه: التطبيق لا يفترض أن تشابه اسم الهاتف يعني توافق الشاشة. لن يعرض أي موديل كـ«مطابق مؤكد» إلا إذا أُضيفت المطابقة إلى قاعدة البيانات وتم توثيقها.</div>
+    </div>
+    <div class="panel">
+      <h2>نتائج المطابقة</h2>
+      <div id="results" class="empty">اكتب موديل الهاتف أو كود الشاشة ثم اضغط بحث.</div>
+    </div>
+  </section>
+
+  <section id="add" class="view hidden">
+    <div class="panel">
+      <h2>➕ إضافة مطابقة جديدة</h2>
+      <p class="small">أضف موديل المصدر والموديلات التي جُرّبت معها نفس الشاشة. اترك الحالة «قيد التحقق» حتى تتأكد عملياً أو من رقم قطعة موثوق.</p>
+      <form id="matchForm">
+        <div class="grid">
+          <div><label>الماركة</label><select id="fBrand" required><option value="">اختر</option><option>SAMSUNG</option><option>REDMI</option><option>XIAOMI</option><option>OPPO</option><option>VIVO</option><option>INFINIX</option><option>TECNO</option><option>HUAWEI</option><option>HONOR</option><option>REALME</option><option>IPHONE</option><option>POCO</option><option>GOOGLE</option></select></div>
+          <div><label>تقنية الشاشة</label><select id="fTech" required><option value="">اختر</option><option>LCD</option><option>OLED</option><option>AMOLED</option><option>INCELL</option><option>غير محدد</option></select></div>
+        </div>
+        <label>موديل الهاتف الأصلي</label><input id="fSource" placeholder="مثال: Galaxy A12" required>
+        <label>الموديلات المتوافقة (افصل بينها بفاصلة)</label><textarea id="fMatches" rows="3" placeholder="موديل 1، موديل 2..." required></textarea>
+        <div class="grid">
+          <div><label>كود الشاشة / رقم القطعة</label><input id="fCode" placeholder="اختياري"></div>
+          <div><label>رقم الفلاتة أو ملاحظة الكونكتور</label><input id="fConnector" placeholder="اختياري"></div>
+        </div>
+        <label>مصدر التحقق</label><select id="fEvidence"><option value="تجربة عملية">تجربة عملية على الجهاز</option><option value="رقم قطعة موحد موثّق">رقم قطعة موحد موثّق</option><option value="مورد موثوق">مورد موثوق</option><option value="غير متحقق">غير متحقق</option></select>
+        <label>حالة المطابقة</label><select id="fStatus"><option value="pending">قيد التحقق</option><option value="confirmed">مطابقة مؤكدة</option></select>
+        <label>ملاحظات</label><textarea id="fNotes" rows="2" placeholder="مثلاً: نفس الفلاتة ونفس الكونكتور..."></textarea>
+        <div class="actions"><button class="primary" type="submit">حفظ المطابقة</button><button type="reset">مسح الحقول</button></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="database" class="view hidden">
+    <div class="panel">
+      <h2>📚 قاعدة بيانات المطابقات</h2>
+      <div class="grid">
+        <div><label>تصفية حسب الحالة</label><select id="filterStatus"><option value="">الكل</option><option value="confirmed">مؤكدة</option><option value="pending">قيد التحقق</option></select></div>
+        <div><label>بحث داخل القاعدة</label><input id="dbQuery" placeholder="اسم الموديل أو الكود"></div>
+      </div>
+      <div id="dbList"></div>
+    </div>
+  </section>
+
+  <section id="backup" class="view hidden">
+    <div class="panel">
+      <h2>💾 النسخ الاحتياطي ونقل البيانات</h2>
+      <p class="small">البيانات تُحفظ داخل هذا المتصفح على هذا الجهاز. صدّر نسخة JSON بانتظام حتى لا تضيع عند تغيير الجهاز أو حذف بيانات المتصفح.</p>
+      <div class="actions">
+        <button class="primary" id="exportBtn">تصدير قاعدة البيانات</button>
+        <button id="importBtn">استيراد نسخة JSON</button>
+        <input type="file" id="importFile" accept=".json,application/json" class="hidden">
+      </div>
+      <div class="notice">هذه النسخة الأولية لا تتصل بقاعدة بيانات عالمية ولا تجلب توافقات تلقائياً من الإنترنت. يجب إدخال المطابقات الموثقة أولاً. يمكن لاحقاً ربطها بمصدر بيانات تقني موثوق.</div>
+      <div class="actions"><button id="clearBtn" style="border-color:#8b3c3c;color:#ffaaaa">حذف كل البيانات من هذا الجهاز</button></div>
+    </div>
+  </section>
+</main>
+<footer>KHIRO SCREEN MATCH PRO · إصدار أولي محلي</footer>
 <script>
-const $=id=>document.getElementById(id);let images=[],lastPDF=null;
-function addRow(name='',price='',note=''){let d=document.createElement('div');d.className='row';d.innerHTML=`<input class="pname" placeholder="مثال: Redmi Note 13" value="${escAttr(name)}"><input class="pprice" type="number" min="0" placeholder="DA" value="${escAttr(price)}"><input class="pnote" placeholder="OLED / ORG" value="${escAttr(note)}"><button class="btn red" onclick="this.parentElement.remove();stats()">×</button>`;$('items').appendChild(d);d.querySelectorAll('input').forEach(x=>x.addEventListener('input',stats));stats()}
-function escAttr(s){return String(s??'').replace(/[&"<>]/g,c=>({'&':'&amp;','"':'&quot;','<':'&lt;','>':'&gt;'}[c]))}
-function rows(){return [...document.querySelectorAll('#items .row')].map(r=>({name:r.querySelector('.pname').value.trim(),price:r.querySelector('.pprice').value.trim(),note:r.querySelector('.pnote').value.trim()})).filter(x=>x.name)}
-function stats(){let a=rows(),m=new Map(),du=0;a.forEach(x=>{let k=x.name.toLowerCase();if(m.has(k))du++;m.set(k,1)});$('count').textContent=a.length;$('dupes').textContent=du;$('missing').textContent=a.filter(x=>x.price==='').length}
-function clearItems(){$('items').innerHTML='';addRow()}
-function pasteToggle(){$('pasteBox').classList.toggle('hidden')}
-function parseLine(line){let p=line.split(/[|;\t,]+/).map(x=>x.trim()).filter(Boolean);if(p.length<2){let m=line.match(/^(.+?)\s{2,}(\d+(?:[.,]\d+)?)\s*(.*)$/);return m?{name:m[1].trim(),price:m[2].replace(',','.'),note:m[3].trim()}:null}return {name:p[0],price:(p[1]||'').replace(/[^\d.,]/g,'').replace(',','.'),note:p.slice(2).join(' ')} }
-function importBulk(){let lines=$('bulkText').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);let added=0;lines.forEach(l=>{let x=parseLine(l);if(x&&x.name){addRow(x.name,x.price,x.note);added++}});toast('تمت إضافة '+added+' منتج.');}
-function parseOCR(){let text=$('ocrText').value;let n=0;text.split(/\r?\n/).forEach(l=>{let x=parseLine(l);if(x&&x.name){addRow(x.name,x.price,x.note);n++}});toast('أضفنا '+n+' سطر. راجع الأسعار والموديلات.');}
-function setImages(files){images=[...images,...files];$('thumbs').innerHTML='';images.forEach(f=>{let im=document.createElement('img');im.src=URL.createObjectURL(f);$('thumbs').appendChild(im)})}
-$('cameraInput').addEventListener('change',e=>setImages(e.target.files));$('imageInput').addEventListener('change',e=>setImages(e.target.files));
-function clearImages(){images=[];$('thumbs').innerHTML='';$('cameraInput').value='';$('imageInput').value='';$('ocrText').value='';$('ocrStatus').textContent=''}
-async function runOCR(){if(!images.length){toast('صوّر أو اختر صورة أولاً.');return}if(!window.Tesseract){toast('تعذر تحميل OCR. تحقق من الإنترنت.');return}$('ocrStatus').textContent='جارٍ تحميل محرك القراءة...';let out=[];try{for(let i=0;i<images.length;i++){$('ocrStatus').textContent=`قراءة الصورة ${i+1} من ${images.length}...`;let result=await Tesseract.recognize(images[i],'eng+fra+ara',{logger:m=>{if(m.status==='recognizing text')$('ocrStatus').textContent=`قراءة الصورة ${i+1}: ${Math.round(m.progress*100)}%`}});out.push(result.data.text)}$('ocrText').value=out.join('\n');$('ocrStatus').textContent='اكتملت القراءة. راجع النص ثم اضغط تحويل النص إلى منتجات.'}catch(e){$('ocrStatus').textContent='تعذرت قراءة الصور. جرّب صورة أوضح أو أدخل النص يدوياً.'}}
-function parseTextList(t){let map=new Map();t.split(/\r?\n/).forEach(l=>{let x=parseLine(l);if(x&&x.name)map.set(x.name.toLowerCase(),x)});return map}
-function compareLists(){let old=parseTextList($('oldList').value),nw=parseTextList($('newList').value),out=[];nw.forEach((v,k)=>{if(!old.has(k))out.push(`<div>🆕 <b>${esc(v.name)}</b> — منتج جديد (${esc(v.price||'بدون سعر')})</div>`);else{let o=old.get(k);if(o.price!==v.price)out.push(`<div>🔄 <b>${esc(v.name)}</b>: ${esc(o.price||'—')} ← ${esc(v.price||'—')}</div>`)}});old.forEach((v,k)=>{if(!nw.has(k))out.push(`<div>➖ <b>${esc(v.name)}</b> — غير موجود في القائمة الجديدة</div>`)});$('compareResult').innerHTML=out.length?out.join(''):'لا توجد تغييرات واضحة.'}
-function applyBulk(){let v=Number($('bulkValue').value)||0,mode=$('bulkMode').value;document.querySelectorAll('.pprice').forEach(inp=>{if(inp.value==='')return;let n=Number(inp.value);if(mode==='add')n+=v;if(mode==='subtract')n-=v;if(mode==='percent')n=n*(1+v/100);if(mode==='set')n=v;inp.value=Math.max(0,Math.round(n*100)/100)});stats();toast('تم تعديل الأسعار.');}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function ordered(){let a=rows(),s=$('sorting').value;if(s==='az')a.sort((x,y)=>x.name.localeCompare(y.name));if(s==='price')a.sort((x,y)=>(Number(x.price)||0)-(Number(y.price)||0));return a}
-function makePDF(){let a=ordered();if(!a.length){toast('أضف منتجاً واحداً على الأقل.');return}if(!window.jspdf){toast('تعذر تحميل مكتبة PDF. تحقق من الإنترنت.');return}let {jsPDF}=window.jspdf,format=$('paper').value,doc=new jsPDF({orientation:'portrait',unit:'mm',format:format});let w=doc.internal.pageSize.getWidth(),h=doc.internal.pageSize.getHeight(),theme=$('theme').value;let navy=theme==='black'?[35,35,35]:theme==='blue'?[25,75,125]:[16,45,80],gold=theme==='black'?[110,110,110]:[201,168,92];let title=$('listTitle').value||'LISTE DES PRIX',cat=$('category').value,sub=$('subtitle').value;doc.setFillColor(...navy);doc.rect(0,0,w,29,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(17);doc.text('KHIRO TELECOM',w/2,12,{align:'center'});doc.setFontSize(9);doc.text('KGP  •  '+title.toUpperCase(),w/2,20,{align:'center'});doc.setDrawColor(...gold);doc.setLineWidth(1);doc.line(12,31,w-12,31);doc.setTextColor(30,40,55);doc.setFontSize(11);doc.text((cat?cat+'  •  ':'')+sub,w/2,38,{align:'center'});
-let cols=Number($('columns').value),margin=12,gap=5,top=46,bottom=13,colW=(w-2*margin-gap*(cols-1))/cols,perCol=Math.ceil(a.length/cols),rowH=7.4,idx=0;for(let c=0;c<cols;c++){let x=margin+c*(colW+gap),y=top;doc.setFillColor(...navy);doc.rect(x,y,colW,8,'F');doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.text('MODEL',x+2,y+5.3);doc.text('PRICE',x+colW-2,y+5.3,{align:'right'});y+=8;for(let j=0;j<perCol&&idx<a.length;j++,idx++){let item=a[idx];if(y+rowH>h-bottom){doc.addPage();y=15;doc.setFillColor(...navy);doc.rect(x,y,colW,8,'F');doc.setTextColor(255,255,255);doc.text('MODEL',x+2,y+5.3);doc.text('PRICE',x+colW-2,y+5.3,{align:'right'});y+=8}if(j%2===0){doc.setFillColor(244,247,250);doc.rect(x,y,colW,rowH,'F')}doc.setTextColor(30,40,55);doc.setFont('helvetica','normal');doc.setFontSize(7.5);let name=item.name+(item.note?' - '+item.note:'');let lines=doc.splitTextToSize(name,colW*.68);doc.text(lines.slice(0,2),x+2,y+4.8);doc.setFont('helvetica','bold');doc.text((item.price||'—')+' '+$('currency').value,x+colW-2,y+4.8,{align:'right'});doc.setDrawColor(220,225,232);doc.line(x,y+rowH,x+colW,y+rowH);y+=rowH}}
-if($('watermark').checked){let pages=doc.getNumberOfPages();for(let p=1;p<=pages;p++){doc.setPage(p);doc.setTextColor(225,228,232);doc.setFontSize(24);doc.setFont('helvetica','bold');doc.text('KHIRO',w/2,h/2,{align:'center',angle:35});doc.setTextColor(100);doc.setFontSize(7);doc.text('KHIRO TELECOM KGP',w/2,h-6,{align:'center'})}}let filename='KHIRO_'+(cat||'LIST').replace(/[^a-z0-9_-]/gi,'_')+'.pdf';lastPDF=doc.output('blob');doc.save(filename);toast('تم إنشاء ملف PDF وتحميله.');}
-function archiveData(){try{return JSON.parse(localStorage.getItem('khiro_list_archive')||'[]')}catch(e){return []}}
-function saveArchive(){let d={id:Date.now(),title:$('listTitle').value,category:$('category').value,subtitle:$('subtitle').value,currency:$('currency').value,items:rows(),date:new Date().toLocaleString()};let a=archiveData();a.unshift(d);localStorage.setItem('khiro_list_archive',JSON.stringify(a.slice(0,60)));renderArchive();toast('تم حفظ القائمة في الأرشيف.');}
-function renderArchive(){let a=archiveData();$('archive').innerHTML=a.length?a.map((d,i)=>`<div class="archive-item"><div><b>${esc(d.title)} ${esc(d.category)}</b>${d.items.length} منتج • ${esc(d.date)}</div><button class="btn light" onclick="loadArchive(${i})">فتح</button></div>`).join(''):'<p class="muted">لا توجد قوائم محفوظة.</p>'}
-function loadArchive(i){let d=archiveData()[i];if(!d)return;$('listTitle').value=d.title;$('category').value=d.category;$('subtitle').value=d.subtitle;$('currency').value=d.currency;$('items').innerHTML='';d.items.forEach(x=>addRow(x.name,x.price,x.note));toast('تم فتح القائمة.');window.scrollTo({top:0,behavior:'smooth'})}
-function clearArchive(){if(confirm('هل تريد مسح كل القوائم المحفوظة؟')){localStorage.removeItem('khiro_list_archive');renderArchive()}}
-async function sharePDF(){if(!lastPDF){toast('أنشئ PDF أولاً.');return}let file=new File([lastPDF],'KHIRO_LIST.pdf',{type:'application/pdf'});try{if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'KHIRO TELECOM Price List',text:'Liste des prix'});}else{toast('المشاركة المباشرة غير مدعومة هنا. شارك ملف PDF من التنزيلات.')}}catch(e){}}
-function toast(t){$('toast').textContent=t;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2600)}
-addRow();renderArchive();
+const KEY='khiro_screen_match_pro_v1';
+let records=load();
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}
+function save(){localStorage.setItem(KEY,JSON.stringify(records));renderDB()}
+function norm(s){return (s||'').toLocaleUpperCase('en').replace(/[أإآ]/g,'ا').replace(/\s+/g,' ').trim()}
+function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function statusLabel(s){return s==='confirmed'?'مطابقة مؤكدة':'قيد التحقق'}
+function resultCard(r,matchedName){return `<div class="result"><div class="resulttop"><div class="model">${safe(matchedName||r.source)}</div><span class="tag ${r.status}">${statusLabel(r.status)}</span></div><div class="meta">الأصل: ${safe(r.source)} · ${safe(r.brand)} · ${safe(r.tech)}<br>كود الشاشة: ${safe(r.code||'غير مسجل')}<br>الفلاتة/الكونكتور: ${safe(r.connector||'غير مسجل')}<br>مصدر التحقق: ${safe(r.evidence)}${r.notes?'<br>ملاحظات: '+safe(r.notes):''}</div></div>`}
+function search(){
+ const q=norm(document.getElementById('query').value),tech=document.getElementById('technology').value,brand=document.getElementById('brand').value;
+ const out=document.getElementById('results');
+ if(!q){out.className='empty';out.textContent='اكتب موديل الهاتف أو كود الشاشة أولاً.';return}
+ const hits=[];
+ records.forEach(r=>{
+  if(tech&&r.tech!==tech)return;if(brand&&r.brand!==brand)return;
+  const hay=[r.source,r.code,r.brand,r.tech,...r.matches].map(norm);
+  if(hay.some(x=>x&&x.includes(q)) || q.split(' ').every(t=>hay.some(x=>x.includes(t)))) hits.push(r);
+ });
+ if(!hits.length){out.className='empty';out.innerHTML='لا توجد مطابقة مسجلة في قاعدة البيانات حالياً.<br><span class="small">هذا لا يعني عدم وجود توافق؛ يعني فقط أنه لا توجد معلومة موثقة لدينا بعد.</span>';return}
+ out.className='';
+ const verified=hits.filter(r=>r.status==='confirmed'),pending=hits.filter(r=>r.status!=='confirmed');
+ out.innerHTML=`<p class="small">تم العثور على ${hits.length} سجل: ${verified.length} مؤكد و${pending.length} قيد التحقق.</p>`+
+ verified.map(r=>resultCard(r)).join('')+pending.map(r=>resultCard(r)).join('');
+}
+document.getElementById('searchBtn').onclick=search;
+document.getElementById('query').addEventListener('keydown',e=>{if(e.key==='Enter')search()});
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+ document.querySelectorAll('.view').forEach(x=>x.classList.add('hidden'));document.getElementById(b.dataset.tab).classList.remove('hidden');
+ if(b.dataset.tab==='database')renderDB();
+});
+document.getElementById('matchForm').onsubmit=e=>{
+ e.preventDefault();
+ const source=document.getElementById('fSource').value.trim(),matches=document.getElementById('fMatches').value.split(/[,،\n]+/).map(x=>x.trim()).filter(Boolean);
+ if(!source||!matches.length){alert('أدخل الموديل الأصلي وموديل توافق واحداً على الأقل.');return}
+ const status=document.getElementById('fStatus').value,evidence=document.getElementById('fEvidence').value;
+ if(status==='confirmed'&&evidence==='غير متحقق'){alert('لا يمكن اعتماد مطابقة مؤكدة دون مصدر تحقق. اختر قيد التحقق أو أضف مصدر تحقق.');return}
+ records.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),brand:document.getElementById('fBrand').value,tech:document.getElementById('fTech').value,source,matches,code:document.getElementById('fCode').value.trim(),connector:document.getElementById('fConnector').value.trim(),evidence,status,notes:document.getElementById('fNotes').value.trim(),created:new Date().toISOString()});
+ save();e.target.reset();alert('تم حفظ المطابقة في هذا الجهاز.');document.querySelector('[data-tab="database"]').click();
+};
+function renderDB(){
+ const q=norm(document.getElementById('dbQuery').value),f=document.getElementById('filterStatus').value,el=document.getElementById('dbList');
+ const arr=records.filter(r=>(!f||r.status===f)&&(!q||[r.source,r.brand,r.tech,r.code,...r.matches].some(x=>norm(x).includes(q))));
+ if(!arr.length){el.innerHTML='<div class="empty">لا توجد سجلات مطابقة.</div>';return}
+ el.innerHTML=arr.map(r=>`<div class="result"><div class="resulttop"><div class="model">${safe(r.source)}</div><span class="tag ${r.status}">${statusLabel(r.status)}</span></div><div class="meta">${safe(r.brand)} · ${safe(r.tech)}<br>المتوافق: ${safe(r.matches.join('، '))}<br>الكود: ${safe(r.code||'—')} · التحقق: ${safe(r.evidence)}</div><div class="actions">${r.status!=='confirmed'?`<button onclick="confirmRecord('${r.id}')">اعتماد بعد التحقق</button>`:''}<button onclick="deleteRecord('${r.id}')" style="color:#ffaaaa">حذف</button></div></div>`).join('');
+}
+window.confirmRecord=id=>{const r=records.find(x=>x.id===id);if(!r)return;if(r.evidence==='غير متحقق'){alert('أضف مصدر تحقق أولاً بتعديل السجل أو إعادة إدخاله.');return}if(confirm('هل تحققت فعلياً من توافق الشاشة؟')){r.status='confirmed';save()}};
+window.deleteRecord=id=>{if(confirm('حذف هذا السجل؟')){records=records.filter(x=>x.id!==id);save()}};
+document.getElementById('dbQuery').oninput=renderDB;document.getElementById('filterStatus').onchange=renderDB;
+document.getElementById('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify(records,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='khiro-screen-match-backup.json';a.click();URL.revokeObjectURL(a.href)};
+document.getElementById('importBtn').onclick=()=>document.getElementById('importFile').click();
+document.getElementById('importFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!Array.isArray(data)||!data.every(x=>x.source&&Array.isArray(x.matches)))throw Error();if(confirm('استبدال قاعدة البيانات الحالية بالنسخة المستوردة؟')){records=data;save();alert('تم الاستيراد.')}}catch(err){alert('ملف غير صالح أو تنسيقه غير صحيح.')}e.target.value=''};
+document.getElementById('clearBtn').onclick=()=>{if(confirm('تحذير: حذف جميع سجلات المطابقة نهائياً من هذا المتصفح؟')){records=[];save();alert('تم حذف السجلات.')}};
+renderDB();
 </script>
-</body></html>
+</body>
+</html>
