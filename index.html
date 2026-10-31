@@ -1,171 +1,102 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101827">
-<title>KHIRO SCREEN MATCH PRO</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07111d">
+<title>PRO REPAIR TOOLS</title>
 <style>
-:root{--bg:#0b1220;--panel:#121d2e;--panel2:#19263a;--line:#2b3b52;--gold:#e7b84b;--text:#f4f7fb;--muted:#9eacc0;--green:#31c48d;--yellow:#f4c35e;--red:#ff7777}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#0b1220,#101b2d);color:var(--text);font-family:Arial,Tahoma,sans-serif;min-height:100vh}
-header{padding:25px 18px 18px;text-align:center;border-bottom:1px solid var(--line);background:#101827}
-.logo{font-weight:900;letter-spacing:1.5px;color:var(--gold);font-size:clamp(23px,5vw,34px)}header p{color:var(--muted);margin:8px 0 0;font-size:14px}
-main{max-width:980px;margin:24px auto;padding:0 15px 40px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-button,.tab{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:12px 15px;border-radius:11px;cursor:pointer;font-weight:700}
-.tab.active,button.primary{background:var(--gold);color:#171717;border-color:var(--gold)}
-.panel{background:rgba(18,29,46,.96);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px;box-shadow:0 12px 35px #0003}
-h2{font-size:19px;margin:0 0 14px}label{display:block;color:var(--muted);font-size:13px;margin:12px 0 6px}
-input,select,textarea{width:100%;background:#0c1523;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:13px;font-size:15px;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--gold)}.searchrow{display:grid;grid-template-columns:1fr auto;gap:9px}
-.small{font-size:12px;color:var(--muted);line-height:1.7}.notice{border-right:3px solid var(--yellow);padding:10px 12px;background:#2a2417;border-radius:8px;color:#f7dfaa;font-size:13px;line-height:1.7;margin-top:13px}
-.result{border:1px solid var(--line);border-radius:13px;padding:14px;margin-top:10px;background:#101a2a}
-.resulttop{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.model{font-weight:800;font-size:17px}
-.tag{font-size:11px;border-radius:30px;padding:5px 9px;font-weight:700}.confirmed{background:#123b31;color:#75e5b9}.pending{background:#463819;color:#ffda7a}.rejected{background:#482326;color:#ffaaaa}
-.meta{color:var(--muted);font-size:13px;line-height:1.8;margin-top:8px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions button{padding:9px 12px;font-size:12px}
-.empty{text-align:center;color:var(--muted);padding:25px 10px}.hidden{display:none!important}
-table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:10px;border-bottom:1px solid var(--line);text-align:right}th{color:var(--gold)}
-footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
-@media(max-width:600px){.grid{grid-template-columns:1fr}.searchrow{grid-template-columns:1fr}.panel{padding:14px}.tabs button{flex:1}}
-</style>
-</head>
+:root{--bg:#07111d;--panel:#101f30;--panel2:#162a40;--line:#24415a;--blue:#28c5ff;--mint:#3de3c1;--text:#f3f8fc;--muted:#9bb0c4}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#17334d 0,transparent 55%),var(--bg);color:var(--text);font-family:Arial,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#07111ded;backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:15px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{font-weight:900;letter-spacing:1px;font-size:20px}.logo span{color:var(--blue)}button,input{font:inherit}
+.lang,.filter{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:10px 14px;border-radius:10px}
+.hero{padding:54px 6% 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:25px;align-items:center}
+.kicker{color:var(--mint);font-size:11px;letter-spacing:2px;font-weight:bold}
+h1{font-size:clamp(34px,6vw,62px);line-height:1.12;margin:15px 0}
+h1 span{color:var(--blue)}.hero p{color:var(--muted);line-height:1.9;max-width:620px}
+.hero-art{min-height:230px;border:1px solid #286080;border-radius:22px;background:linear-gradient(145deg,#14334b,#0b1725 65%);display:grid;place-items:center;box-shadow:0 0 45px #28c5ff15}
+.hero-art .orb{font-size:90px;filter:drop-shadow(0 0 24px #28c5ff77)}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.stat{background:#102235;border:1px solid var(--line);padding:12px 16px;border-radius:12px}.stat b{display:block;color:var(--mint);font-size:21px}.stat small{color:var(--muted)}
+main{padding:10px 5% 60px}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin:18px 0}
+h2{font-size:26px;margin:0 0 7px}.sub{color:var(--muted);font-size:13px}
+.search{width:min(100%,330px);background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:13px;color:white;outline:none}.search:focus{border-color:var(--blue)}
+.filters{display:flex;gap:8px;overflow:auto;padding:5px 0 18px}.filter{white-space:nowrap;color:var(--muted);cursor:pointer}.filter.active,.filter:hover{color:var(--mint);border-color:var(--blue);background:#12334a}
+.count{color:var(--muted);font-size:13px;margin:0 0 15px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:linear-gradient(145deg,#12253a,#0d1a29);border:1px solid var(--line);border-radius:16px;padding:17px;min-width:0;transition:.2s}
+.card:hover{transform:translateY(-3px);border-color:#269fc9;box-shadow:0 12px 30px #0005}
+.visual{height:105px;border-radius:12px;background:radial-gradient(circle at 50% 35%,#1d5670,#10283d 65%,#0b1928);display:grid;place-items:center;margin-bottom:14px}
+.visual span{font-size:48px;filter:drop-shadow(0 5px 12px #0008)}
+.brand{font-size:10px;color:var(--mint);letter-spacing:1px;font-weight:bold}
+.name{font-size:15px;line-height:1.55;margin:8px 0 12px;overflow-wrap:anywhere}
+.price{font-size:21px;color:var(--blue);font-weight:800;direction:ltr;text-align:right}
+.price small{font-size:11px;color:var(--muted);font-weight:normal}
+.meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid #20374d;color:var(--muted);font-size:11px}
+.empty{display:none;color:var(--muted);padding:35px;text-align:center}
+footer{border-top:1px solid var(--line);text-align:center;color:var(--muted);padding:25px;font-size:12px}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}.hero-art{min-height:170px}}
+@media(max-width:520px){header{padding:13px 4%}.logo{font-size:16px}.hero{padding:38px 5% 25px}.grid{grid-template-columns:1fr 1fr;gap:9px}main{padding-left:4%;padding-right:4%}.card{padding:11px}.visual{height:82px}.visual span{font-size:38px}.name{font-size:13px}.price{font-size:17px}}
+</style></head>
 <body>
-<header>
-  <div class="logo">KHIRO <span style="color:#fff">SCREEN MATCH</span> PRO</div>
-  <p>مرجع مطابقة شاشات الهواتف — الدقة قبل السرعة</p>
-</header>
+<header><div class="logo">PRO <span>REPAIR</span> TOOLS</div><button class="lang" id="lang">EN</button></header>
+<section class="hero">
+ <div><div class="kicker">KGP BELFORT · EL HARRACHE · 2026</div>
+ <h1 id="headline">كل أدوات الصيانة<br><span>في مكان واحد</span></h1>
+ <p id="intro">كتالوج احترافي لمعدات صيانة الهواتف والإلكترونيات. تصفّح الموديلات والعلامات التجارية والأسعار بالدينار الجزائري.</p>
+ <div class="stats"><div class="stat"><b id="total">86</b><small id="statProducts">منتج في الكتالوج</small></div><div class="stat"><b>07</b><small id="statCats">أقسام رئيسية</small></div><div class="stat"><b>DA</b><small id="statCurrency">الدينار الجزائري</small></div></div></div>
+ <div class="hero-art"><div class="orb">🔬</div></div>
+</section>
 <main>
-  <div class="tabs">
-    <button class="tab active" data-tab="search">البحث عن مطابقة</button>
-    <button class="tab" data-tab="add">إضافة مطابقة</button>
-    <button class="tab" data-tab="database">قاعدة البيانات</button>
-    <button class="tab" data-tab="backup">النسخ الاحتياطي</button>
-  </div>
-
-  <section id="search" class="view">
-    <div class="panel">
-      <h2>🔎 ابحث عن الشاشة</h2>
-      <label for="query">اكتب نوع الشاشة والموديل أو كود القطعة</label>
-      <div class="searchrow">
-        <input id="query" placeholder="مثال: LCD A12 SAMSUNG" autocomplete="off">
-        <button class="primary" id="searchBtn">بحث</button>
-      </div>
-      <div class="grid">
-        <div><label for="technology">تقنية الشاشة</label><select id="technology"><option value="">الكل</option><option>LCD</option><option>OLED</option><option>AMOLED</option><option>INCELL</option><option>غير محدد</option></select></div>
-        <div><label for="brand">العلامة التجارية</label><select id="brand"><option value="">كل العلامات</option><option>SAMSUNG</option><option>REDMI</option><option>XIAOMI</option><option>OPPO</option><option>VIVO</option><option>INFINIX</option><option>TECNO</option><option>HUAWEI</option><option>HONOR</option><option>REALME</option><option>IPHONE</option><option>POCO</option><option>GOOGLE</option></select></div>
-      </div>
-      <div class="notice">تنبيه: التطبيق لا يفترض أن تشابه اسم الهاتف يعني توافق الشاشة. لن يعرض أي موديل كـ«مطابق مؤكد» إلا إذا أُضيفت المطابقة إلى قاعدة البيانات وتم توثيقها.</div>
-    </div>
-    <div class="panel">
-      <h2>نتائج المطابقة</h2>
-      <div id="results" class="empty">اكتب موديل الهاتف أو كود الشاشة ثم اضغط بحث.</div>
-    </div>
-  </section>
-
-  <section id="add" class="view hidden">
-    <div class="panel">
-      <h2>➕ إضافة مطابقة جديدة</h2>
-      <p class="small">أضف موديل المصدر والموديلات التي جُرّبت معها نفس الشاشة. اترك الحالة «قيد التحقق» حتى تتأكد عملياً أو من رقم قطعة موثوق.</p>
-      <form id="matchForm">
-        <div class="grid">
-          <div><label>الماركة</label><select id="fBrand" required><option value="">اختر</option><option>SAMSUNG</option><option>REDMI</option><option>XIAOMI</option><option>OPPO</option><option>VIVO</option><option>INFINIX</option><option>TECNO</option><option>HUAWEI</option><option>HONOR</option><option>REALME</option><option>IPHONE</option><option>POCO</option><option>GOOGLE</option></select></div>
-          <div><label>تقنية الشاشة</label><select id="fTech" required><option value="">اختر</option><option>LCD</option><option>OLED</option><option>AMOLED</option><option>INCELL</option><option>غير محدد</option></select></div>
-        </div>
-        <label>موديل الهاتف الأصلي</label><input id="fSource" placeholder="مثال: Galaxy A12" required>
-        <label>الموديلات المتوافقة (افصل بينها بفاصلة)</label><textarea id="fMatches" rows="3" placeholder="موديل 1، موديل 2..." required></textarea>
-        <div class="grid">
-          <div><label>كود الشاشة / رقم القطعة</label><input id="fCode" placeholder="اختياري"></div>
-          <div><label>رقم الفلاتة أو ملاحظة الكونكتور</label><input id="fConnector" placeholder="اختياري"></div>
-        </div>
-        <label>مصدر التحقق</label><select id="fEvidence"><option value="تجربة عملية">تجربة عملية على الجهاز</option><option value="رقم قطعة موحد موثّق">رقم قطعة موحد موثّق</option><option value="مورد موثوق">مورد موثوق</option><option value="غير متحقق">غير متحقق</option></select>
-        <label>حالة المطابقة</label><select id="fStatus"><option value="pending">قيد التحقق</option><option value="confirmed">مطابقة مؤكدة</option></select>
-        <label>ملاحظات</label><textarea id="fNotes" rows="2" placeholder="مثلاً: نفس الفلاتة ونفس الكونكتور..."></textarea>
-        <div class="actions"><button class="primary" type="submit">حفظ المطابقة</button><button type="reset">مسح الحقول</button></div>
-      </form>
-    </div>
-  </section>
-
-  <section id="database" class="view hidden">
-    <div class="panel">
-      <h2>📚 قاعدة بيانات المطابقات</h2>
-      <div class="grid">
-        <div><label>تصفية حسب الحالة</label><select id="filterStatus"><option value="">الكل</option><option value="confirmed">مؤكدة</option><option value="pending">قيد التحقق</option></select></div>
-        <div><label>بحث داخل القاعدة</label><input id="dbQuery" placeholder="اسم الموديل أو الكود"></div>
-      </div>
-      <div id="dbList"></div>
-    </div>
-  </section>
-
-  <section id="backup" class="view hidden">
-    <div class="panel">
-      <h2>💾 النسخ الاحتياطي ونقل البيانات</h2>
-      <p class="small">البيانات تُحفظ داخل هذا المتصفح على هذا الجهاز. صدّر نسخة JSON بانتظام حتى لا تضيع عند تغيير الجهاز أو حذف بيانات المتصفح.</p>
-      <div class="actions">
-        <button class="primary" id="exportBtn">تصدير قاعدة البيانات</button>
-        <button id="importBtn">استيراد نسخة JSON</button>
-        <input type="file" id="importFile" accept=".json,application/json" class="hidden">
-      </div>
-      <div class="notice">هذه النسخة الأولية لا تتصل بقاعدة بيانات عالمية ولا تجلب توافقات تلقائياً من الإنترنت. يجب إدخال المطابقات الموثقة أولاً. يمكن لاحقاً ربطها بمصدر بيانات تقني موثوق.</div>
-      <div class="actions"><button id="clearBtn" style="border-color:#8b3c3c;color:#ffaaaa">حذف كل البيانات من هذا الجهاز</button></div>
-    </div>
-  </section>
+ <div class="toolbar"><div><h2 id="catalogTitle">كتالوج المنتجات</h2><div class="sub" id="catalogSub">اختر القسم أو ابحث عن اسم الموديل أو العلامة التجارية</div></div>
+ <input class="search" id="search" type="search" placeholder="ابحث عن موديل أو علامة تجارية..."></div>
+ <div class="filters" id="filters"></div>
+ <div class="count" id="count"></div>
+ <section class="grid" id="grid"></section><div class="empty" id="empty">لا توجد نتائج مطابقة.</div>
 </main>
-<footer>KHIRO SCREEN MATCH PRO · إصدار أولي محلي</footer>
+<footer>© 2026 PRO REPAIR TOOLS · KGP BELFORT — EL HARRACHE</footer>
 <script>
-const KEY='khiro_screen_match_pro_v1';
-let records=load();
-function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}
-function save(){localStorage.setItem(KEY,JSON.stringify(records));renderDB()}
-function norm(s){return (s||'').toLocaleUpperCase('en').replace(/[أإآ]/g,'ا').replace(/\s+/g,' ').trim()}
-function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function statusLabel(s){return s==='confirmed'?'مطابقة مؤكدة':'قيد التحقق'}
-function resultCard(r,matchedName){return `<div class="result"><div class="resulttop"><div class="model">${safe(matchedName||r.source)}</div><span class="tag ${r.status}">${statusLabel(r.status)}</span></div><div class="meta">الأصل: ${safe(r.source)} · ${safe(r.brand)} · ${safe(r.tech)}<br>كود الشاشة: ${safe(r.code||'غير مسجل')}<br>الفلاتة/الكونكتور: ${safe(r.connector||'غير مسجل')}<br>مصدر التحقق: ${safe(r.evidence)}${r.notes?'<br>ملاحظات: '+safe(r.notes):''}</div></div>`}
-function search(){
- const q=norm(document.getElementById('query').value),tech=document.getElementById('technology').value,brand=document.getElementById('brand').value;
- const out=document.getElementById('results');
- if(!q){out.className='empty';out.textContent='اكتب موديل الهاتف أو كود الشاشة أولاً.';return}
- const hits=[];
- records.forEach(r=>{
-  if(tech&&r.tech!==tech)return;if(brand&&r.brand!==brand)return;
-  const hay=[r.source,r.code,r.brand,r.tech,...r.matches].map(norm);
-  if(hay.some(x=>x&&x.includes(q)) || q.split(' ').every(t=>hay.some(x=>x.includes(t)))) hits.push(r);
- });
- if(!hits.length){out.className='empty';out.innerHTML='لا توجد مطابقة مسجلة في قاعدة البيانات حالياً.<br><span class="small">هذا لا يعني عدم وجود توافق؛ يعني فقط أنه لا توجد معلومة موثقة لدينا بعد.</span>';return}
- out.className='';
- const verified=hits.filter(r=>r.status==='confirmed'),pending=hits.filter(r=>r.status!=='confirmed');
- out.innerHTML=`<p class="small">تم العثور على ${hits.length} سجل: ${verified.length} مؤكد و${pending.length} قيد التحقق.</p>`+
- verified.map(r=>resultCard(r)).join('')+pending.map(r=>resultCard(r)).join('');
+const products = [{"cat": "microscopes", "brand": "RF4", "name": "MICROSCOOP RF4 RF 6565PRO", "price": 97500}, {"cat": "microscopes", "brand": "RF4", "name": "MICROSCOOP RF6565TVP", "price": 87000}, {"cat": "microscopes", "brand": "RF4", "name": "MICROSCOOP RF4 RF-6558PRO", "price": 66500}, {"cat": "microscopes", "brand": "RF4", "name": "SUPORT MICROSCOOP RF-FX35A", "price": 10800}, {"cat": "microscopes", "brand": "RF4", "name": "OBJECTIVE RF6 0.48X", "price": 3600}, {"cat": "microscopes", "brand": "FORWARD (FW)", "name": "MICROSCOOP FW-C65PRO MAX-TS", "price": 104000}, {"cat": "microscopes", "brand": "FORWARD (FW)", "name": "MICROSCOOP FW-C55PRO", "price": 66500}, {"cat": "microscopes", "brand": "FORWARD (FW)", "name": "MICROSCOOP FW-7050 PRO", "price": 63000}, {"cat": "microscopes", "brand": "FORWARD (FW)", "name": "SUPPORT MICROSCOP FW-R02", "price": 9800}, {"cat": "microscopes", "brand": "YCS", "name": "MICROSCOOP YCS 6575X BASE", "price": 87000}, {"cat": "microscopes", "brand": "YCS", "name": "MICROSCOOP YCS 6558S BASE MODEL", "price": 67000}, {"cat": "microscopes", "brand": "YCS", "name": "YCS LAMPE UV 6558 POUR MICROSCOPE", "price": 17500}, {"cat": "microscopes", "brand": "2UUL", "name": "FIXATEUR 2UUL MS81 DUSTPROOF CAP FOR MICROSCOOP EYE LENS", "price": 1000}, {"cat": "microscopes", "brand": "MAANT", "name": "OBJECTIVE MAANT 0.5 AX", "price": 2450}, {"cat": "soldering", "brand": "2UUL", "name": "STATION FER 2UUL FIND210 POWER AC", "price": 27800}, {"cat": "soldering", "brand": "2UUL", "name": "2UUL SC98 GOLD PLATED FPC CONNECTOR REBALLING SOLDER BAR 3 BRAS WITH ULTRALIGHT", "price": 1500}, {"cat": "soldering", "brand": "KAILIWEI", "name": "STATION FER AIR CHAUD KAILIWEI 8589D", "price": 8400}, {"cat": "soldering", "brand": "KAILIWEI", "name": "FER KAILIWEI K-505", "price": 1750}, {"cat": "soldering", "brand": "FORWARD (FW)", "name": "STATION AIR CHAUD FW-HA04", "price": 27500}, {"cat": "soldering", "brand": "FORWARD (FW)", "name": "STATION AIR CHAUD FW-HA03", "price": 18800}, {"cat": "soldering", "brand": "KOOCU", "name": "ITAN KOOCU 0.3", "price": 180}, {"cat": "soldering", "brand": "AIDA", "name": "POMPE A DESOUDER AIDA SD300", "price": 700}, {"cat": "soldering", "brand": "DIVERS / STANDARD", "name": "STATION AIR CHAUD AX-H312 1200W 220V", "price": 64500}, {"cat": "soldering", "brand": "RF4", "name": "STATION FER RF4 T12", "price": 6400}, {"cat": "soldering", "brand": "TBK", "name": "STATION FER TBK 211", "price": 26800}, {"cat": "soldering", "brand": "MECHANIC", "name": "TET FER 900M T IS MECANIC", "price": 370}, {"cat": "soldering", "brand": "SUNSHINE / RELIFE", "name": "TET RELIFE RL-T245", "price": 1450}, {"cat": "power", "brand": "SUNSHINE / RELIFE", "name": "ALLIMENTATION SUNSHINE 30V 5V P 3005DA", "price": 16300}, {"cat": "power", "brand": "SUNSHINE / RELIFE", "name": "ALLIMENTATION SUNSHINE P-1505TA", "price": 9700}, {"cat": "power", "brand": "SUNSHINE / RELIFE", "name": "ALLIMENTATION SUNSHINE 1502TN", "price": 6800}, {"cat": "power", "brand": "KT", "name": "ALLIMENTATION KT 302D", "price": 8500}, {"cat": "power", "brand": "KT", "name": "ALLIMENTATION KT 1502D+", "price": 2850}, {"cat": "power", "brand": "DIVERS / STANDARD", "name": "ALLIMENTATION MACHINE IOS 16 POUCES", "price": 177000}, {"cat": "power", "brand": "DIVERS / STANDARD", "name": "CABLE MITRIX", "price": 230}, {"cat": "power", "brand": "RF4", "name": "ALLIMENTATION RF 3005PRO", "price": 24800}, {"cat": "power", "brand": "RF4", "name": "ALLIMENTATION RF 3005D", "price": 21500}, {"cat": "power", "brand": "YCS", "name": "ALLIMENTATION YCS 3061", "price": 30800}, {"cat": "power", "brand": "YCS", "name": "ALLIMENTATION YCS 3060", "price": 15800}, {"cat": "power", "brand": "DIANBA", "name": "ALLIMENTATION DIANBA222 N01 PRO PRO", "price": 11700}, {"cat": "power", "brand": "MAANT", "name": "TESTEUR CHARGE MAANT MINI", "price": 5300}, {"cat": "screen", "brand": "FORWARD (FW)", "name": "PLAQUE CHAUFANTE 3IN1 FW-361S-2024", "price": 17800}, {"cat": "screen", "brand": "FORWARD (FW)", "name": "PLAQUE CHAUFANTE FW -108N", "price": 16800}, {"cat": "screen", "brand": "FORWARD (FW)", "name": "PLAQUE CHAUFANTE FW-1082 2024", "price": 7500}, {"cat": "screen", "brand": "2UUL", "name": "APPAREIL REMOVE 2UUL DA84 CVT GRINDER PRO VERSION FOR IPHONE", "price": 6900}, {"cat": "screen", "brand": "2UUL", "name": "FIXATEUR 2UUL OPEN SCREN DA08", "price": 6400}, {"cat": "screen", "brand": "SUNSHINE / RELIFE", "name": "FILE SEPARATION RELIFE RL 059D", "price": 250}, {"cat": "screen", "brand": "SUNSHINE / RELIFE", "name": "FILE SEPARATION SUNSHINE SS-051 SUNSHINE", "price": 250}, {"cat": "screen", "brand": "DIVERS / STANDARD", "name": "TAPIS SEPARATEUR 14 POUC", "price": 400}, {"cat": "screen", "brand": "DIVERS / STANDARD", "name": "TAPIS SEPARATEUR 7 POUC", "price": 200}, {"cat": "screen", "brand": "MAANT", "name": "MAANT OCA REMOVE CJ-1", "price": 3600}, {"cat": "fixtures", "brand": "RF4", "name": "FIXATEUR RF-FT04", "price": 3700}, {"cat": "fixtures", "brand": "RF4", "name": "FIXATEUR RF-FT05", "price": 3400}, {"cat": "fixtures", "brand": "RF4", "name": "FIXATEUR RF-TZ01", "price": 800}, {"cat": "fixtures", "brand": "RF4", "name": "FIXATEUR RF-TZ02", "price": 800}, {"cat": "fixtures", "brand": "MAANT", "name": "FIXATEUR MAANT H3PRO", "price": 6550}, {"cat": "fixtures", "brand": "MAANT", "name": "C03 MAANT MAGNETIC TIN PLANTING SILICA GEL CUSHION", "price": 1450}, {"cat": "fixtures", "brand": "2UUL", "name": "FIXATEUR 2UUL BH03 THE ONE JIG", "price": 5600}, {"cat": "fixtures", "brand": "YAXUN", "name": "PCB SUPORT YAXUN", "price": 100}, {"cat": "fixtures", "brand": "SUNSHINE / RELIFE", "name": "SUPPORT COLLA RELIFE RL-062A SUNSHINE", "price": 450}, {"cat": "fixtures", "brand": "KAILIWEI", "name": "SUPPORT KAILWEI 401", "price": 2900}, {"cat": "hand", "brand": "2UUL", "name": "EPINGLE 2UUL TW31 CERAMIC", "price": 1350}, {"cat": "hand", "brand": "2UUL", "name": "TOURNIVISSE 2UUL SD02 1.2 1.5 SAM", "price": 1050}, {"cat": "hand", "brand": "2UUL", "name": "RACKLETTE 2UUL DA92", "price": 650}, {"cat": "hand", "brand": "2UUL", "name": "RACKLETTE 2UUL DA93", "price": 650}, {"cat": "hand", "brand": "DIVERS / STANDARD", "name": "EPINGLE ST-13", "price": 700}, {"cat": "hand", "brand": "DIVERS / STANDARD", "name": "EPINGLE AA-15", "price": 650}, {"cat": "hand", "brand": "DIVERS / STANDARD", "name": "PINCE PLASTIQUE QB 3", "price": 150}, {"cat": "hand", "brand": "MAANT", "name": "EPINGLE MAANT SS-A1 3D", "price": 1650}, {"cat": "hand", "brand": "MAANT", "name": "EPINGLE SS-A MAANT", "price": 1450}, {"cat": "hand", "brand": "MAANT", "name": "EPINGLE SS-J MAANT", "price": 1450}, {"cat": "hand", "brand": "TBK", "name": "TOURNIVISS ELECTRIQUE TBK009", "price": 12800}, {"cat": "hand", "brand": "TBK", "name": "TOURNIVISS ELECTRIQUE TBK007", "price": 7600}, {"cat": "hand", "brand": "SUNSHINE / RELIFE", "name": "EPINGLE RELIFE RL-ESD-15", "price": 220}, {"cat": "hand", "brand": "YAXUN", "name": "PISTOLET YAXUN", "price": 350}, {"cat": "hand", "brand": "RF4", "name": "RACKLETTE RF4 RF-DA9", "price": 1050}, {"cat": "consumables", "brand": "DIVERS / STANDARD", "name": "GRAND RALLONGE TYPE T09", "price": 1450}, {"cat": "consumables", "brand": "DIVERS / STANDARD", "name": "PETIT RALLONGE", "price": 470}, {"cat": "consumables", "brand": "DIVERS / STANDARD", "name": "KIT NETTOYAGE 50G", "price": 450}, {"cat": "consumables", "brand": "DIVERS / STANDARD", "name": "RUBAN ARGENT QB 2CM", "price": 350}, {"cat": "consumables", "brand": "DIVERS / STANDARD", "name": "RUBAN ARGENT QB 1CM", "price": 250}, {"cat": "consumables", "brand": "SUNSHINE / RELIFE", "name": "TAPIS SILICONE RELIFE RL-004SA", "price": 450}, {"cat": "consumables", "brand": "SUNSHINE / RELIFE", "name": "TAPIS SILICONE RELIFE SS-004S SUNSHINE", "price": 300}, {"cat": "consumables", "brand": "RF4", "name": "BOIT RANGEMENT RF-ST13", "price": 2700}, {"cat": "consumables", "brand": "KAILIWEI", "name": "LAMP KAILIWEI 0550", "price": 11500}, {"cat": "consumables", "brand": "YAXUN", "name": "LOUP LAMP YX 138", "price": 650}, {"cat": "consumables", "brand": "NASANE", "name": "TAPIS SILICONE PAD 8 NASANE", "price": 450}];
+const categories = [
+ {id:"all",ar:"الكل",en:"All",icon:"✦"},
+ {id:"microscopes",ar:"الميكروسكوبات والعدسات",en:"Microscopes & Optics",icon:"🔬"},
+ {id:"soldering",ar:"اللحام وإزالة اللحام",en:"Soldering & Desoldering",icon:"♨️"},
+ {id:"power",ar:"التغذية والفحص",en:"Power Supply & Testing",icon:"⚡"},
+ {id:"screen",ar:"فصل الشاشات وأجهزة OCA",en:"Screen Separation & OCA",icon:"📱"},
+ {id:"fixtures",ar:"المثبتات وحوامل البوردة",en:"Fixtures & PCB Supports",icon:"🧩"},
+ {id:"hand",ar:"الأدوات اليدوية والملاقط",en:"Hand Tools & Tweezers",icon:"🛠️"},
+ {id:"consumables",ar:"حصائر السيليكون والمستهلكات",en:"Silicone Mats & Consumables",icon:"🧰"}
+];
+const icons={microscopes:"🔬",soldering:"♨️",power:"⚡",screen:"📱",fixtures:"🧩",hand:"🛠️",consumables:"🧰"};
+let lang="ar", active="all";
+const $=id=>document.getElementById(id);
+function money(n){return new Intl.NumberFormat(lang==="ar"?"fr-DZ":"en-US").format(n)+" DA"}
+function drawFilters(){
+ $("filters").innerHTML=categories.map(c=>`<button class="filter ${active===c.id?"active":""}" data-id="${c.id}">${c.icon} ${c[lang]}</button>`).join("");
 }
-document.getElementById('searchBtn').onclick=search;
-document.getElementById('query').addEventListener('keydown',e=>{if(e.key==='Enter')search()});
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
- document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');
- document.querySelectorAll('.view').forEach(x=>x.classList.add('hidden'));document.getElementById(b.dataset.tab).classList.remove('hidden');
- if(b.dataset.tab==='database')renderDB();
-});
-document.getElementById('matchForm').onsubmit=e=>{
- e.preventDefault();
- const source=document.getElementById('fSource').value.trim(),matches=document.getElementById('fMatches').value.split(/[,،\n]+/).map(x=>x.trim()).filter(Boolean);
- if(!source||!matches.length){alert('أدخل الموديل الأصلي وموديل توافق واحداً على الأقل.');return}
- const status=document.getElementById('fStatus').value,evidence=document.getElementById('fEvidence').value;
- if(status==='confirmed'&&evidence==='غير متحقق'){alert('لا يمكن اعتماد مطابقة مؤكدة دون مصدر تحقق. اختر قيد التحقق أو أضف مصدر تحقق.');return}
- records.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),brand:document.getElementById('fBrand').value,tech:document.getElementById('fTech').value,source,matches,code:document.getElementById('fCode').value.trim(),connector:document.getElementById('fConnector').value.trim(),evidence,status,notes:document.getElementById('fNotes').value.trim(),created:new Date().toISOString()});
- save();e.target.reset();alert('تم حفظ المطابقة في هذا الجهاز.');document.querySelector('[data-tab="database"]').click();
-};
-function renderDB(){
- const q=norm(document.getElementById('dbQuery').value),f=document.getElementById('filterStatus').value,el=document.getElementById('dbList');
- const arr=records.filter(r=>(!f||r.status===f)&&(!q||[r.source,r.brand,r.tech,r.code,...r.matches].some(x=>norm(x).includes(q))));
- if(!arr.length){el.innerHTML='<div class="empty">لا توجد سجلات مطابقة.</div>';return}
- el.innerHTML=arr.map(r=>`<div class="result"><div class="resulttop"><div class="model">${safe(r.source)}</div><span class="tag ${r.status}">${statusLabel(r.status)}</span></div><div class="meta">${safe(r.brand)} · ${safe(r.tech)}<br>المتوافق: ${safe(r.matches.join('، '))}<br>الكود: ${safe(r.code||'—')} · التحقق: ${safe(r.evidence)}</div><div class="actions">${r.status!=='confirmed'?`<button onclick="confirmRecord('${r.id}')">اعتماد بعد التحقق</button>`:''}<button onclick="deleteRecord('${r.id}')" style="color:#ffaaaa">حذف</button></div></div>`).join('');
+function render(){
+ const q=$("search").value.toLocaleLowerCase();
+ const list=products.filter(p=>(active==="all"||p.cat===active)&&(`${p.name} ${p.brand} ${p.price}`).toLowerCase().includes(q));
+ $("grid").innerHTML=list.map(p=>`<article class="card"><div class="visual"><span>${icons[p.cat]}</span></div><div class="brand">${p.brand}</div><div class="name">${p.name}</div><div class="price">${money(p.price)} <small>· ${lang==="ar"?"السعر حسب الكتالوج":"Catalog price"}</small></div><div class="meta"><span>${categories.find(c=>c.id===p.cat)[lang]}</span><span>PRO</span></div></article>`).join("");
+ $("count").textContent=lang==="ar"?`عرض ${list.length} من ${products.length} منتج`:`Showing ${list.length} of ${products.length} products`;
+ $("empty").style.display=list.length?"none":"block";
+ drawFilters();
 }
-window.confirmRecord=id=>{const r=records.find(x=>x.id===id);if(!r)return;if(r.evidence==='غير متحقق'){alert('أضف مصدر تحقق أولاً بتعديل السجل أو إعادة إدخاله.');return}if(confirm('هل تحققت فعلياً من توافق الشاشة؟')){r.status='confirmed';save()}};
-window.deleteRecord=id=>{if(confirm('حذف هذا السجل؟')){records=records.filter(x=>x.id!==id);save()}};
-document.getElementById('dbQuery').oninput=renderDB;document.getElementById('filterStatus').onchange=renderDB;
-document.getElementById('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify(records,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='khiro-screen-match-backup.json';a.click();URL.revokeObjectURL(a.href)};
-document.getElementById('importBtn').onclick=()=>document.getElementById('importFile').click();
-document.getElementById('importFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!Array.isArray(data)||!data.every(x=>x.source&&Array.isArray(x.matches)))throw Error();if(confirm('استبدال قاعدة البيانات الحالية بالنسخة المستوردة؟')){records=data;save();alert('تم الاستيراد.')}}catch(err){alert('ملف غير صالح أو تنسيقه غير صحيح.')}e.target.value=''};
-document.getElementById('clearBtn').onclick=()=>{if(confirm('تحذير: حذف جميع سجلات المطابقة نهائياً من هذا المتصفح؟')){records=[];save();alert('تم حذف السجلات.')}};
-renderDB();
-</script>
-</body>
-</html>
+function setLang(){
+ lang=lang==="ar"?"en":"ar";document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ $("lang").textContent=lang==="ar"?"EN":"AR";
+ $("headline").innerHTML=lang==="ar"?'كل أدوات الصيانة<br><span>في مكان واحد</span>':'All Repair Tools<br><span>In One Place</span>';
+ $("intro").textContent=lang==="ar"?"كتالوج احترافي لمعدات صيانة الهواتف والإلكترونيات. تصفّح الموديلات والعلامات التجارية والأسعار بالدينار الجزائري.":"A professional catalog of mobile phone and electronics repair equipment. Explore models, brands and prices in Algerian dinars.";
+ $("statProducts").textContent=lang==="ar"?"منتج في الكتالوج":"Products in catalog";
+ $("statCats").textContent=lang==="ar"?"أقسام رئيسية":"Main categories";
+ $("statCurrency").textContent=lang==="ar"?"الدينار الجزائري":"Algerian dinar";
+ $("catalogTitle").textContent=lang==="ar"?"كتالوج المنتجات":"Product Catalog";
+ $("catalogSub").textContent=lang==="ar"?"اختر القسم أو ابحث عن اسم الموديل أو العلامة التجارية":"Choose a category or search by model or brand";
+ $("search").placeholder=lang==="ar"?"ابحث عن موديل أو علامة تجارية...":"Search model or brand...";
+ $("empty").textContent=lang==="ar"?"لا توجد نتائج مطابقة.":"No matching products.";
+ render();
+}
+$("lang").addEventListener("click",setLang);
+$("search").addEventListener("input",render);
+$("filters").addEventListener("click",e=>{const b=e.target.closest("button[data-id]");if(b){active=b.dataset.id;render();}});
+$("total").textContent=products.length;render();
+</script></body></html>
