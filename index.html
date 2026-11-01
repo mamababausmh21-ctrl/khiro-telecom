@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KHIRO OUTILLAGE — Boutique</title>
+<style>
+:root{--navy:#111a2e;--blue:#244cc5;--green:#16865f;--bg:#f4f6fa;--line:#e1e6ef;--muted:#687386}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#172033;font-family:Arial,sans-serif}
+header{background:linear-gradient(120deg,#10182a,#24418a);color:white;padding:22px 16px}
+.head,main{max-width:1120px;margin:auto}.head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+h1{margin:0;font-size:25px}.tagline{margin-top:7px;color:#dce5ff;font-size:14px}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:9px;padding:10px 13px;font-weight:bold}
+.cartbtn{background:#fff;color:#173c9c}.hero{padding:22px 0 12px}.hero h2{margin:0 0 7px}.hero p{margin:0;color:var(--muted)}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.controls input{flex:1;min-width:180px}.controls input,.controls select{padding:11px;border:1px solid var(--line);border-radius:9px;background:white}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.product{background:#fff;border:1px solid var(--line);border-radius:13px;padding:15px;display:flex;flex-direction:column;min-width:0}
+.category{font-size:12px;background:#edf2ff;color:#2448ad;padding:5px 8px;border-radius:30px;align-self:flex-start}
+.product h3{font-size:16px;line-height:1.35;margin:11px 0 6px;overflow-wrap:anywhere}.brand{font-size:13px;color:var(--muted)}.price{font-size:20px;font-weight:800;color:#2149bc;margin:13px 0}
+.add{background:var(--blue);color:white;margin-top:auto}.quantity{display:flex;align-items:center;gap:9px;margin:0 0 12px}.quantity input{width:70px;padding:8px;border:1px solid var(--line);border-radius:8px}
+.cart{background:white;border:1px solid var(--line);border-radius:14px;padding:17px;margin:20px 0}.cart h2{margin:0 0 12px}.cartrow{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.cartrow small{display:block;color:var(--muted);margin-top:4px}.remove{background:#fff0f0;color:#b52d2d;padding:6px 9px}.total{font-size:20px;font-weight:800;text-align:left;margin:15px 0}.whatsapp{background:#16865f;color:white;width:100%;font-size:16px;padding:14px}.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed #ccd4e1;border-radius:12px;grid-column:1/-1}
+.note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:500px){.grid{grid-template-columns:1fr}h1{font-size:21px}}
+</style></head>
+<body>
+<header><div class="head"><div><h1>KHIRO OUTILLAGE</h1><div class="tagline">Outillage & matériel de maintenance mobile · Prix en DA</div></div><button class="cartbtn" onclick="document.getElementById('panier').scrollIntoView({behavior:'smooth'})">🛒 Mon panier (<span id="cartCount">0</span>)</button></div></header>
+<main>
+<section class="hero"><h2>Catalogue des outils de réparation</h2><p>Choisissez vos outils et envoyez votre commande directement sur WhatsApp.</p></section>
+<div class="controls"><input id="search" placeholder="Rechercher un outil, une marque ou une référence…"><select id="category"><option value="">Toutes les catégories</option></select></div>
+<section id="products" class="grid"></section>
+<section id="panier" class="cart"><h2>🛒 Votre commande</h2><div id="cartRows"><div class="empty">Votre panier est vide. Ajoutez des outils pour préparer votre commande.</div></div><div class="total">Total estimé : <span id="total">0 DA</span></div><label for="customerName">Nom (facultatif)</label><input id="customerName" placeholder="Votre nom" style="width:100%;padding:11px;border:1px solid #e1e6ef;border-radius:9px;margin:7px 0 12px"><label for="customerNote">Livraison / remarque (facultatif)</label><input id="customerNote" placeholder="Commune, livraison ou question" style="width:100%;padding:11px;border:1px solid #e1e6ef;border-radius:9px;margin:7px 0 12px"><button class="whatsapp" onclick="sendOrder()">Envoyer la commande via WhatsApp</button><div class="note">Le bouton ouvre WhatsApp avec le détail de votre commande. La commande n'est confirmée qu'après échange avec le vendeur. Les prix et disponibilités doivent être confirmés.</div></section>
+</main><div class="footer">KHIRO OUTILLAGE · Commande via WhatsApp</div>
+<script>
+const WHATSAPP='213781516925';
+const products=[
+{name:'MICROSCOOP RF4 RF 6565PRO',brand:'RF4',category:'Microscopes & optique',price:97500},
+{name:'MICROSCOOP RF6565TVP',brand:'RF4',category:'Microscopes & optique',price:87000},
+{name:'MICROSCOOP RF4 RF-6558PRO',brand:'RF4',category:'Microscopes & optique',price:66500},
+{name:'SUPPORT MICROSCOPE RF-FX35A',brand:'RF4',category:'Microscopes & optique',price:10800},
+{name:'OBJECTIVE RF6 0.48X',brand:'RF4',category:'Microscopes & optique',price:3600},
+{name:'MICROSCOPE FW-C65PRO MAX-TS',brand:'FORWARD',category:'Microscopes & optique',price:104000},
+{name:'MICROSCOPE FW-C55PRO',brand:'FORWARD',category:'Microscopes & optique',price:66500},
+{name:'MICROSCOPE FW-7050 PRO',brand:'FORWARD',category:'Microscopes & optique',price:63000},
+{name:'SUPPORT MICROSCOPE FW-R02',brand:'FORWARD',category:'Microscopes & optique',price:9800},
+{name:'MICROSCOPE YCS 6575X BASE',brand:'YCS',category:'Microscopes & optique',price:87000},
+{name:'MICROSCOPE YCS 6558S BASE MODEL',brand:'YCS',category:'Microscopes & optique',price:67000},
+{name:'LAMPE UV 6558 POUR MICROSCOPE',brand:'YCS',category:'Microscopes & optique',price:17500},
+{name:'STATION FER 2UUL FIND210 POWER AC',brand:'2UUL',category:'Soudage & dessoudage',price:27800},
+{name:'SOLDER BAR 3 BRAS WITH ULTRALIGHT',brand:'2UUL',category:'Soudage & dessoudage',price:1500},
+{name:'STATION FER AIR CHAUD KAILIWEI 8589D',brand:'KAILIWEI',category:'Soudage & dessoudage',price:8400},
+{name:'FER KAILIWEI K-505',brand:'KAILIWEI',category:'Soudage & dessoudage',price:1750},
+{name:'STATION AIR CHAUD FW-HA04',brand:'FORWARD',category:'Soudage & dessoudage',price:27500},
+{name:'STATION AIR CHAUD FW-HA03',brand:'FORWARD',category:'Soudage & dessoudage',price:18800},
+{name:'POMPE À DESSOUDER AIDA SD300',brand:'AIDA',category:'Soudage & dessoudage',price:700},
+{name:'STATION AIR CHAUD AX-H312 1200W 220V',brand:'DIVERS / STANDARD',category:'Soudage & dessoudage',price:64500},
+{name:'STATION FER RF4 T12',brand:'RF4',category:'Soudage & dessoudage',price:6400},
+{name:'STATION FER TBK 211',brand:'TBK',category:'Soudage & dessoudage',price:26800},
+{name:'ALIMENTATION SUNSHINE P3005DA 30V 5A',brand:'SUNSHINE / RELIFE',category:'Alimentation & test',price:16300},
+{name:'ALIMENTATION SUNSHINE P-1505TA',brand:'SUNSHINE / RELIFE',category:'Alimentation & test',price:9700},
+{name:'ALIMENTATION SUNSHINE 1502TN',brand:'SUNSHINE / RELIFE',category:'Alimentation & test',price:6800},
+{name:'ALIMENTATION KT 302D',brand:'KT',category:'Alimentation & test',price:8500},
+{name:'ALIMENTATION KT 1502D+',brand:'KT',category:'Alimentation & test',price:2850},
+{name:'ALIMENTATION MACHINE IOS 16 POUCES',brand:'DIVERS / STANDARD',category:'Alimentation & test',price:177000},
+{name:'CÂBLE MITRIX',brand:'DIVERS / STANDARD',category:'Alimentation & test',price:230},
+{name:'ALIMENTATION RF 3005PRO',brand:'RF4',category:'Alimentation & test',price:24800},
+{name:'ALIMENTATION RF 3005D',brand:'RF4',category:'Alimentation & test',price:21500},
+{name:'ALIMENTATION YCS 3061',brand:'YCS',category:'Alimentation & test',price:30800},
+{name:'ALIMENTATION YCS 3060',brand:'YCS',category:'Alimentation & test',price:15800},
+{name:'TESTEUR CHARGE MAANT MINI',brand:'MAANT',category:'Alimentation & test',price:5300},
+{name:'PLAQUE CHAUFFANTE 3IN1 FW-361S-2024',brand:'FORWARD',category:'Séparation écran & OCA',price:17800},
+{name:'PLAQUE CHAUFFANTE FW-108N',brand:'FORWARD',category:'Séparation écran & OCA',price:16800},
+{name:'PLAQUE CHAUFFANTE FW-1082 2024',brand:'FORWARD',category:'Séparation écran & OCA',price:7500},
+{name:'APPAREIL REMOVE 2UUL DA84 CVT GRINDER PRO IPHONE',brand:'2UUL',category:'Séparation écran & OCA',price:6900},
+{name:'FIXATEUR 2UUL OPEN SCREEN DA08',brand:'2UUL',category:'Séparation écran & OCA',price:6400},
+{name:'FILE SÉPARATION RELIFE RL 059D',brand:'SUNSHINE / RELIFE',category:'Séparation écran & OCA',price:250},
+{name:'TAPIS SÉPARATEUR 14 POUCES',brand:'DIVERS / STANDARD',category:'Séparation écran & OCA',price:400},
+{name:'TAPIS SÉPARATEUR 7 POUCES',brand:'DIVERS / STANDARD',category:'Séparation écran & OCA',price:200},
+{name:'MAANT OCA REMOVE CJ-1',brand:'MAANT',category:'Séparation écran & OCA',price:3600},
+{name:'FIXATEUR RF-FT04',brand:'RF4',category:'Fixateurs & supports PCB',price:3700},
+{name:'FIXATEUR RF-FT05',brand:'RF4',category:'Fixateurs & supports PCB',price:3400},
+{name:'FIXATEUR RF-TZ01',brand:'RF4',category:'Fixateurs & supports PCB',price:800},
+{name:'FIXATEUR RF-TZ02',brand:'RF4',category:'Fixateurs & supports PCB',price:800},
+{name:'FIXATEUR MAANT H3PRO',brand:'MAANT',category:'Fixateurs & supports PCB',price:6550},
+{name:'FIXATEUR 2UUL BH03 THE ONE JIG',brand:'2UUL',category:'Fixateurs & supports PCB',price:5600},
+{name:'PCB SUPPORT YAXUN',brand:'YAXUN',category:'Fixateurs & supports PCB',price:100},
+{name:'EPINGLE 2UUL TW31 CERAMIC',brand:'2UUL',category:'Outils à main',price:1350},
+{name:'TOURNEVIS 2UUL SD02 1.2 1.5 SAM',brand:'2UUL',category:'Outils à main',price:1050},
+{name:'RACLETTE 2UUL DA92',brand:'2UUL',category:'Outils à main',price:650},
+{name:'RACLETTE 2UUL DA93',brand:'2UUL',category:'Outils à main',price:650},
+{name:'EPINGLE ST-13',brand:'DIVERS / STANDARD',category:'Outils à main',price:700},
+{name:'EPINGLE AA-15',brand:'DIVERS / STANDARD',category:'Outils à main',price:650},
+{name:'PINCE PLASTIQUE QB 3',brand:'DIVERS / STANDARD',category:'Outils à main',price:150},
+{name:'TOURNEVIS ÉLECTRIQUE TBK009',brand:'TBK',category:'Outils à main',price:12800},
+{name:'TOURNEVIS ÉLECTRIQUE TBK007',brand:'TBK',category:'Outils à main',price:7600},
+{name:'EPINGLE RELIFE RL-ESD-15',brand:'SUNSHINE / RELIFE',category:'Outils à main',price:220},
+{name:'PISTOLET YAXUN',brand:'YAXUN',category:'Outils à main',price:350},
+{name:'RACLETTE RF4 RF-DA9',brand:'RF4',category:'Outils à main',price:1050},
+{name:'GRANDE RALLONGE TYPE T09',brand:'DIVERS / STANDARD',category:'Tapis & consommables',price:1450},
+{name:'PETITE RALLONGE',brand:'DIVERS / STANDARD',category:'Tapis & consommables',price:470},
+{name:'KIT NETTOYAGE 50G',brand:'DIVERS / STANDARD',category:'Tapis & consommables',price:450},
+{name:'RUBAN ARGENT QB 2CM',brand:'DIVERS / STANDARD',category:'Tapis & consommables',price:350},
+{name:'RUBAN ARGENT QB 1CM',brand:'DIVERS / STANDARD',category:'Tapis & consommables',price:250},
+{name:'TAPIS SILICONE RELIFE RL-004SA',brand:'SUNSHINE / RELIFE',category:'Tapis & consommables',price:450},
+{name:'TAPIS SILICONE SS-004S SUNSHINE',brand:'SUNSHINE / RELIFE',category:'Tapis & consommables',price:300},
+{name:'BOÎTE RANGEMENT RF-ST13',brand:'RF4',category:'Tapis & consommables',price:2700},
+{name:'LAMPE KAILIWEI 0550',brand:'KAILIWEI',category:'Tapis & consommables',price:11500},
+{name:'LOUPE LAMPE YX 138',brand:'YAXUN',category:'Tapis & consommables',price:650},
+{name:'TAPIS SILICONE PAD 8 NASANE',brand:'NASANE',category:'Tapis & consommables',price:450}
+];
+let cart={};
+const fmt=n=>new Intl.NumberFormat('fr-DZ',{maximumFractionDigits:0}).format(n)+' DA';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const cats=[...new Set(products.map(p=>p.category))];
+
+document.getElementById('category').innerHTML='<option value="">Toutes les catégories</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');
+function renderProducts(){
+ const q=document.getElementById('search').value.toLowerCase(),cat=document.getElementById('category').value;
+ const list=products.map((p,i)=>({...p,i})).filter(p=>(!cat||p.category===cat)&&[p.name,p.brand,p.category].join(' ').toLowerCase().includes(q));
+ document.getElementById('products').innerHTML=list.length?list.map(p=>`<article class="product"><span class="category">${esc(p.category)}</span><h3>${esc(p.name)}</h3><div class="brand">${esc(p.brand)}</div><div class="price">${fmt(p.price)}</div><div class="quantity"><label for="q${p.i}">Quantité</label><input id="q${p.i}" type="number" min="1" max="999" value="${cart[p.i]?.qty||1}"></div><button class="add" onclick="addToCart(${p.i})">${cart[p.i]?'Ajouter encore':'Ajouter au panier'}</button></article>`).join(''):'<div class="empty">Aucun outil trouvé.</div>';
+}
+function addToCart(i){const n=Math.max(1,Math.min(999,Number(document.getElementById('q'+i).value)||1));if(cart[i])cart[i].qty+=n;else cart[i]={...products[i],qty:n};renderCart();renderProducts()}
+function removeItem(i){delete cart[i];renderCart();renderProducts()}
+function renderCart(){
+ const entries=Object.entries(cart);document.getElementById('cartCount').textContent=entries.reduce((s,[,p])=>s+p.qty,0);
+ document.getElementById('total').textContent=fmt(entries.reduce((s,[,p])=>s+p.price*p.qty,0));
+ document.getElementById('cartRows').innerHTML=entries.length?entries.map(([i,p])=>`<div class="cartrow"><div><b>${esc(p.name)}</b><small>${p.qty} × ${fmt(p.price)} = ${fmt(p.qty*p.price)}</small></div><button class="remove" onclick="removeItem(${i})">Retirer</button></div>`).join(''):'<div class="empty">Votre panier est vide. Ajoutez des outils pour préparer votre commande.</div>';
+}
+function sendOrder(){
+ const entries=Object.values(cart);if(!entries.length){alert('Ajoutez au moins un produit au panier.');return}
+ const total=entries.reduce((s,p)=>s+p.price*p.qty,0);
+ let msg='Bonjour KHIRO OUTILLAGE, je souhaite commander :\n'+entries.map(p=>'- '+p.name+' | '+p.qty+' x '+p.price+' DA = '+(p.qty*p.price)+' DA').join('\n');
+ msg+='\n\nTotal estimé : '+total+' DA';
+ const name=document.getElementById('customerName').value.trim(),note=document.getElementById('customerNote').value.trim();
+ if(name)msg+='\nNom : '+name;
+ if(note)msg+='\nLivraison / remarque : '+note;
+ msg+='\n\nMerci de confirmer la disponibilité et le prix.';
+ window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg),'_blank');
+}
+document.getElementById('search').addEventListener('input',renderProducts);
+document.getElementById('category').addEventListener('change',renderProducts);
+renderProducts();renderCart();
+
+</script>
+</body></html>
